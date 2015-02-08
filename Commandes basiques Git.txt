@@ -1,0 +1,38 @@
+Avant de faire une modification, un ajout, un push, faites SYSTEMATIQUEMENT un git pull pour être sur que vous ayez vos fichiers à jour : sa permettra d'éviter des problèmes de conflits entre les fichiers et d'éviter égalements des heures de galères
+
+Commandes principales :
+
+git clone [adresse] : clone le dépôt à l'adresse spécifiée en local dans le dossier ou vous êtes
+
+git pull : récupère les dernières modifications sur le dépôt en ligne
+
+git add [file1] [file2] [...] : ajoute un ou plusieurs fichiers au dépot local
+
+git add * : (a éviter à part si vous êtes sur de ce que vous faites) ajoute tout les fichiers non référencés dans le dépôt
+
+git commit -a -m "message de commit" : valide les modifications que vous avez faits (ajout/modification/suppression de fichier) dans le dépôt local
+
+git push : envoie les nouveaux commits sur le serveur
+
+git status : affiche le statut des fichiers dans le dépot local (en particulier les fichiers qui ne sont pas référencés dans le dépôt et ceux qui ont étés mis à jour
+
+git log : affiche un résumé des commits du dépôt
+
+============================================================
+
+Commandes supplémentaires qui peuvent êtres utiles :
+
+git commit --amend : modifier le dernier message d'un commit
+
+git reset HEAD^ : annule le dernier commit et revient à l'avant dernier
+		
+		HEAD : dernier commit
+		HEAD^ : avant dernier commit
+		HEAD^^ : avant avant dernier commit
+		d6d98923868578a7f38dea79833b56d0326fcba1 : un commit précis (utiliser git log pour trouver le numéro du commit)
+		
+	Même si un commit est supprimé comme ceux-ci, les fichiers eux, restent modifiés
+	
+git reset --hard HEAD^ : Supprime les commits et TOUTES les modifications sur les fichiers sans confirmation
+
+git checkout [file] : si vous n'avez pas encore fait de commit sur le fichier, vous pouvez revenir avec cette commande à la version du fichier tel qu'il était au dernier commit

@@ -3,34 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="brickpi"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry exported="true" kind="lib" path="D:/Documents/Fac/M1/S8/GoPiWan/BrickPiJava-master/libs/pi4j-core-0.0.5.jar"/>
-	<classpathentry exported="true" kind="lib" path="D:/Documents/Fac/M1/S8/GoPiWan/BrickPiJava-master/libs/pi4j-core-0.0.5-javadoc.jar"/>
-	<classpathentry exported="true" kind="lib" path="D:/Documents/Fac/M1/S8/GoPiWan/BrickPiJava-master/libs/pi4j-core-0.0.5-sources.jar"/>
-	<classpathentry kind="lib" path="D:/Documents/Fac/M1/S8/GoPiWan/GoPiWan/jetty/jetty-distribution-9.2.7.v20150116/lib/jetty-alpn-client-9.2.7.v20150116.jar"/>
-	<classpathentry kind="lib" path="D:/Documents/Fac/M1/S8/GoPiWan/GoPiWan/jetty/jetty-distribution-9.2.7.v20150116/lib/jetty-alpn-server-9.2.7.v20150116.jar"/>
-	<classpathentry kind="lib" path="D:/Documents/Fac/M1/S8/GoPiWan/GoPiWan/jetty/jetty-distribution-9.2.7.v20150116/lib/jetty-annotations-9.2.7.v20150116.jar"/>
-	<classpathentry kind="lib" path="D:/Documents/Fac/M1/S8/GoPiWan/GoPiWan/jetty/jetty-distribution-9.2.7.v20150116/lib/jetty-cdi-9.2.7.v20150116.jar"/>
-	<classpathentry kind="lib" path="D:/Documents/Fac/M1/S8/GoPiWan/GoPiWan/jetty/jetty-distribution-9.2.7.v20150116/lib/jetty-client-9.2.7.v20150116.jar"/>
-	<classpathentry kind="lib" path="D:/Documents/Fac/M1/S8/GoPiWan/GoPiWan/jetty/jetty-distribution-9.2.7.v20150116/lib/jetty-continuation-9.2.7.v20150116.jar"/>
-	<classpathentry kind="lib" path="D:/Documents/Fac/M1/S8/GoPiWan/GoPiWan/jetty/jetty-distribution-9.2.7.v20150116/lib/jetty-deploy-9.2.7.v20150116.jar"/>
-	<classpathentry kind="lib" path="D:/Documents/Fac/M1/S8/GoPiWan/GoPiWan/jetty/jetty-distribution-9.2.7.v20150116/lib/jetty-http-9.2.7.v20150116.jar"/>
-	<classpathentry kind="lib" path="D:/Documents/Fac/M1/S8/GoPiWan/GoPiWan/jetty/jetty-distribution-9.2.7.v20150116/lib/jetty-io-9.2.7.v20150116.jar"/>
-	<classpathentry kind="lib" path="D:/Documents/Fac/M1/S8/GoPiWan/GoPiWan/jetty/jetty-distribution-9.2.7.v20150116/lib/jetty-jaas-9.2.7.v20150116.jar"/>
-	<classpathentry kind="lib" path="D:/Documents/Fac/M1/S8/GoPiWan/GoPiWan/jetty/jetty-distribution-9.2.7.v20150116/lib/jetty-jaspi-9.2.7.v20150116.jar"/>
-	<classpathentry kind="lib" path="D:/Documents/Fac/M1/S8/GoPiWan/GoPiWan/jetty/jetty-distribution-9.2.7.v20150116/lib/jetty-jmx-9.2.7.v20150116.jar"/>
-	<classpathentry kind="lib" path="D:/Documents/Fac/M1/S8/GoPiWan/GoPiWan/jetty/jetty-distribution-9.2.7.v20150116/lib/jetty-jndi-9.2.7.v20150116.jar"/>
-	<classpathentry kind="lib" path="D:/Documents/Fac/M1/S8/GoPiWan/GoPiWan/jetty/jetty-distribution-9.2.7.v20150116/lib/jetty-plus-9.2.7.v20150116.jar"/>
-	<classpathentry kind="lib" path="D:/Documents/Fac/M1/S8/GoPiWan/GoPiWan/jetty/jetty-distribution-9.2.7.v20150116/lib/jetty-proxy-9.2.7.v20150116.jar"/>
-	<classpathentry kind="lib" path="D:/Documents/Fac/M1/S8/GoPiWan/GoPiWan/jetty/jetty-distribution-9.2.7.v20150116/lib/jetty-quickstart-9.2.7.v20150116.jar"/>
-	<classpathentry kind="lib" path="D:/Documents/Fac/M1/S8/GoPiWan/GoPiWan/jetty/jetty-distribution-9.2.7.v20150116/lib/jetty-rewrite-9.2.7.v20150116.jar"/>
-	<classpathentry kind="lib" path="D:/Documents/Fac/M1/S8/GoPiWan/GoPiWan/jetty/jetty-distribution-9.2.7.v20150116/lib/jetty-schemas-3.1.jar"/>
-	<classpathentry kind="lib" path="D:/Documents/Fac/M1/S8/GoPiWan/GoPiWan/jetty/jetty-distribution-9.2.7.v20150116/lib/jetty-security-9.2.7.v20150116.jar"/>
-	<classpathentry kind="lib" path="D:/Documents/Fac/M1/S8/GoPiWan/GoPiWan/jetty/jetty-distribution-9.2.7.v20150116/lib/jetty-server-9.2.7.v20150116.jar"/>
-	<classpathentry kind="lib" path="D:/Documents/Fac/M1/S8/GoPiWan/GoPiWan/jetty/jetty-distribution-9.2.7.v20150116/lib/jetty-servlet-9.2.7.v20150116.jar"/>
-	<classpathentry kind="lib" path="D:/Documents/Fac/M1/S8/GoPiWan/GoPiWan/jetty/jetty-distribution-9.2.7.v20150116/lib/jetty-servlets-9.2.7.v20150116.jar"/>
-	<classpathentry kind="lib" path="D:/Documents/Fac/M1/S8/GoPiWan/GoPiWan/jetty/jetty-distribution-9.2.7.v20150116/lib/jetty-util-9.2.7.v20150116.jar"/>
-	<classpathentry kind="lib" path="D:/Documents/Fac/M1/S8/GoPiWan/GoPiWan/jetty/jetty-distribution-9.2.7.v20150116/lib/jetty-webapp-9.2.7.v20150116.jar"/>
-	<classpathentry kind="lib" path="D:/Documents/Fac/M1/S8/GoPiWan/GoPiWan/jetty/jetty-distribution-9.2.7.v20150116/lib/jetty-xml-9.2.7.v20150116.jar"/>
-	<classpathentry kind="lib" path="D:/Documents/Fac/M1/S8/GoPiWan/GoPiWan/jetty/jetty-distribution-9.2.7.v20150116/lib/servlet-api-3.1.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Jetty_lib"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

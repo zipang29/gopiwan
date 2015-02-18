@@ -1,16 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
   <head>
     <meta charset="utf-8">
     <title>GoPiGo Connection</title>
-  </head>
-  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+</head>
   
   <body>
-    
-      <input type="text" value="raspberry.local:7000" />
-      <input type="submit" onclick="document.write('Joli travail d artiste a entamer ici...') ;"
+      <button type="button" onclick="send('up')">UP</button>
+      <button type="button" onclick="send('right')">RIGHT</button>
+      <button type="button" onclick="send('down')">DOWN</button>
+      <button type="button" onclick="send('left')">LEFT</button>
+<br/>
+      <video id="videoDisplay" onload="receiveFluxVideo()">
+            <source src="" type=video/mp4>
+      </video>
+<br/>
+      <textarea id="output" style="width : 600px ; height : 200px ;" ></textarea>
   </body>
-  
+    
+    <script src="api_Interactions.js"></script>
+ 
 </html>

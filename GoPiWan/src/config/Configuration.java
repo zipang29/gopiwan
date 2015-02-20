@@ -15,16 +15,14 @@ public class Configuration {
 	
 	public boolean WHEELS_ENABLED = false ;
 	
-	public final boolean CAMERA_ENABLED = false ;
+	public boolean CAMERA_ENABLED = false ;
 	
 	public static final int NULL = 0b000 ;
 	
 	public static final int WHEELS = 0b001 ;
 	
 	public static final int CAMERA = 0b010 ;
-	
-	public static final int WHEELS_CAMERA = 0b011 ;
-	
+		
 	/**
 	 * exemple d'utilisation : 
 	 * Conficguration(Configuration.WHEELS | Configuration.CAMERA )

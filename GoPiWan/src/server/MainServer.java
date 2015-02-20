@@ -1,5 +1,6 @@
 package server;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -10,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletHandler;
 
+import config.Debug;
+
 /**
  * Serveur HTTP executé sur le RapsberryPi
  * Après le démarrage, le Pi écoute sur un port (7000 par défaut) les ordres provenant de l'interface.
@@ -19,6 +22,8 @@ import org.eclipse.jetty.servlet.ServletHandler;
  *
  */
 public class MainServer{
+	
+	private static int debug = Debug.VERBOSE ;
 	
     private Server server ;
     
@@ -44,13 +49,71 @@ public class MainServer{
     @SuppressWarnings("serial")
     public static class Servlet extends HttpServlet{
     	
-        @Override
+        /**
+         * Action réalisée lorsqu'on reçoit une requete HTTP de type GET de la part du client
+         * Ces requetes est de la forme :
+         * ___________________________________
+         * (En-tête eventuel)
+         * (FORWARD|LEFT|DOWN|RIGHT) <EOL>
+         * speed <EOL>
+         * <EOL>
+         * ___________________________________
+         * 
+         * Envoi d'un message d'acquittement témoignant de l'action effectuée
+         * 
+         * @Override HttpServlet : doPost()
+         */
         protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-            response.setContentType("text/html");
+        	if (debug >= Debug.VERBOSE) System.out.println("[MainServer] : doGet :"+request.getMethod()+" "+request.getQueryString());
+
+            response.setContentType("text/plain");
             response.setStatus(HttpServletResponse.SC_OK);
-            response.getWriter().println("Ici GoPiGo Pi, je reçois 5 sur 5");
+            response.getWriter().println("Ici GoPiGo Pi, je reçois 5 sur 5.\n\nParametres envoyés : "+request.getQueryString());
             
-            gopigo.forward(1, 100); // pour le fun
+        	BufferedReader br = request.getReader() ;
+        	String req = br.readLine() ;
+    		int speed = Integer.parseInt(br.readLine()) ;
+
+        	switch(req){
+        	
+        	case "FORWARD":{
+        		gopigo.forward(1, speed); // arbitraire ; possibilité de faire plusieurs boutons pour plusieurs vitesses
+        		break ;
+        	}
+        	
+        	case "DOWN":{
+        		gopigo.back(1, speed);
+        		break ;
+        	}
+        	
+        	case "LEFT":{
+        		gopigo.turnLeft(1, speed);
+        		break ;
+        	}
+        	
+        	case "RIGHT":{
+        		gopigo.turnRight(1, speed);
+        		break ;
+        	}
+        	
+        	default : break ;
+        	}
+            response.setContentType("text/plain");
+            response.setStatus(HttpServletResponse.SC_OK);
+            response.getWriter().println(req+" : done");
+        }
+        
+        
+        /**
+         * Action réalisée lorsqu'on reçoit une requete HTTP de type POST de la part du client
+         * 
+         * @Override HttpServlet : doPost()
+         */
+        protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        	if (debug >= Debug.VERBOSE) System.out.println("[MainServer] : doPost "+request.toString());
+        	
+            
         }
     }
+    
 }

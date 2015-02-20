@@ -20,11 +20,10 @@ public class Main {
 			//int port = (args[0] == null ) ? 7000 : Integer.parseInt(args[0]) ;
 			
 			// .. args
-			GoPiGo gopigo = new GoPiGo(Debug.VERBOSE, new Configuration(Configuration.WHEELS_CAMERA)) ;
+			GoPiGo gopigo = new GoPiGo(Debug.VERBOSE, new Configuration(Configuration.WHEELS | Configuration.CAMERA)) ;
 			
-			MainServer http = new MainServer(gopigo, 7000) ;
+			MainServer http = new MainServer(gopigo, 80) ;
 			
 		} catch (Exception e) { e.printStackTrace();}
 	}
-
 }

@@ -29,19 +29,19 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:baselineAligned="false"
-                android:gravity="center_horizontal">
+                android:gravity="center">
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="New Button"
+                    android:text="Gauche"
                     android:id="@+id/button"
                     android:layout_column="1" />
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="New Button"
+                    android:text="Droite"
                     android:id="@+id/button2"
                     android:layout_column="24" />
             </TableRow>

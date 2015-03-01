@@ -1,5 +1,6 @@
 package app.gopiwan.gopiwanapp;
 
+import android.net.wifi.WifiManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -7,16 +8,29 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.content.Intent;
+import android.widget.Toast;
+import android.content.Context;
 
 
 public class RechercheWifi extends ActionBarActivity {
+
+    private WifiManager wifi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recherche_wifi);
 
-        // Récupère le bouton "boutonControle
+        // On récupère le service gérant la wifi
+        wifi = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+
+        // Test si la wifi est activé ou non
+        if (!this.wifi.isWifiEnabled()) {
+            wifi.setWifiEnabled(true);
+            Toast.makeText(getApplicationContext(), "La wifi a étée automatiquement activée.", Toast.LENGTH_LONG).show();
+        }
+
+        // Récupère le bouton "boutonControle"
         Button b = (Button) this.findViewById(R.id.boutonControle);
         b.setOnClickListener(new View.OnClickListener() {
             @Override

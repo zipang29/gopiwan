@@ -2,10 +2,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <app.gopiwan.gopiwanapp.ControlesGopiwan android:background="#ccc" android:layout_width="300dp"
-        android:layout_height="300dp" android:paddingLeft="20dp" android:paddingBottom="40dp"
-        app:exampleDimension="24sp" app:exampleColor="#33b5e5"
-        app:exampleString="Hello, ControlesGopiwan"
-        app:exampleDrawable="@android:drawable/ic_menu_add" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Avancer"
+        android:id="@+id/boutonAvancer"
+        android:layout_gravity="center_horizontal|top" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reculer"
+        android:id="@+id/boutonReculer"
+        android:layout_gravity="center_horizontal|bottom" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gauche"
+        android:id="@+id/boutonGauche"
+        android:layout_gravity="left|center_vertical" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Droite"
+        android:id="@+id/boutonDroite"
+        android:layout_gravity="right|center_vertical" />
 </FrameLayout>

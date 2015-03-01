@@ -1,5 +1,6 @@
 package app.gopiwan.gopiwanapp;
 
+import android.content.IntentFilter;
 import android.net.wifi.WifiManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -30,11 +31,17 @@ public class RechercheWifi extends ActionBarActivity {
             Toast.makeText(getApplicationContext(), "La wifi a étée automatiquement activée.", Toast.LENGTH_LONG).show();
         }
 
+        WifiReceiver receiver = new WifiReceiver(wifi, this);
+
+        registerReceiver(receiver, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
+        wifi.startScan();
+
         // Récupère le bouton "boutonControle"
         Button b = (Button) this.findViewById(R.id.boutonControle);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Ces deux lignes permettent de changer d'activités, c'est à dire de vue RechercheWifi vers Controles
                 Intent intent = new Intent(RechercheWifi.this, Controles.class);
                 startActivity(intent);
             }

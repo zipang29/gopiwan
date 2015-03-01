@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Recherche en cours du GoPiWan..."
-            android:id="@+id/textRechercheGoPiWan"
+            android:id="@+id/textRechercheWifi"
             android:textSize="20dp" />
 
         <Button

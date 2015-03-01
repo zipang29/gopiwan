@@ -31,5 +31,12 @@
             android:text="Recherche en cours du GoPiWan..."
             android:id="@+id/textRechercheGoPiWan"
             android:textSize="20dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="controle"
+            android:id="@+id/boutonControle"
+            android:layout_gravity="center_horizontal" />
     </LinearLayout>
 </RelativeLayout>

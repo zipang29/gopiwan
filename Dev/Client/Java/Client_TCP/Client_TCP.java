@@ -1,5 +1,3 @@
-package test;
-
 import java.io.*;
 import java.net.*;
 
@@ -8,7 +6,7 @@ import java.net.*;
 * Simple client Java permettant d'envoyer des caractères à un serveur TCP
 * L'idéal serait de l'adapter dans une version Android
 */
-class ClientGoPiGo
+class Client_TCP
 {
 	public static void main(String argv[]) throws Exception
 	{

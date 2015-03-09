@@ -8,6 +8,7 @@ import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
 import android.net.wifi.WifiConfiguration;
 import android.provider.Settings;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.List;
@@ -55,6 +56,8 @@ public class WifiReceiver extends BroadcastReceiver {
                 {
                     sb = new StringBuilder();
                     sb.append("Connecté");
+                    Button b = (Button) this.rechercheWifi.findViewById(R.id.boutonControle);
+                    b.setEnabled(true);
                 }
             }
         }

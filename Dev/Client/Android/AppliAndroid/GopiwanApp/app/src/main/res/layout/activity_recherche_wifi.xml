@@ -37,6 +37,7 @@
             android:layout_height="wrap_content"
             android:text="controle"
             android:id="@+id/boutonControle"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:enabled="false" />
     </LinearLayout>
 </RelativeLayout>

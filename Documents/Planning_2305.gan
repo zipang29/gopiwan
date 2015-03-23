@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="GoPiWan" company="" webLink="http://" view-date="2015-03-16" view-index="2" gantt-divider-location="393" resource-divider-location="300" version="2.7" locale="fr_FR">
+<?xml version="1.0" encoding="UTF-8"?><project name="GoPiWan" company="" webLink="http://" view-date="2015-03-16" view-index="0" gantt-divider-location="393" resource-divider-location="300" version="2.7" locale="fr_FR">
     <description/>
     <view zooming-state="default:6" id="gantt-chart">
         <field id="tpd3" name="Nom" width="54" order="0"/>
@@ -7,8 +7,8 @@
         <option id="color.recent"><![CDATA[#ffff00 #660066 #666600 #ff9933 #cc0000 #0033cc #990099 #cc0066]]></option>
     </view>
     <view id="resource-table">
-        <field id="0" name="Nom" width="70" order="0"/>
-        <field id="1" name="Rôle par défaut" width="29" order="1"/>
+        <field id="0" name="Nom" width="56" order="0"/>
+        <field id="1" name="Rôle par défaut" width="43" order="1"/>
     </view>
     <!-- -->
     <calendars>
@@ -34,7 +34,7 @@
             <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
             <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
         </taskproperties>
-        <task id="0" name="Formation J2EE (REST)" color="#660066" meeting="false" start="2015-03-23" duration="15" complete="0" expand="true">
+        <task id="0" name="Formation REST" color="#660066" meeting="false" start="2015-03-23" duration="15" complete="0" expand="true">
             <depend id="8" type="4" difference="0" hardness="Strong"/>
         </task>
         <task id="8" name="Codage Interface web" color="#ff9933" meeting="false" start="2015-04-15" duration="13" complete="0" expand="true"/>

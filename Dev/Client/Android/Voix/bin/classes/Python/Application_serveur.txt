@@ -1,0 +1,12 @@
+Script mettant en attente le Raspberry Pi sur le port 5005
+
+C'est à ce jour (2/03/15), la solution la plus triviale pour contrôler le robot GoPiGo à distance, ou pas.
+
+-> depuis le client Java :
+
+pour avancer : f puis retour chariot
+pour reculer : b puis retour chariot
+pour aller à gauche : l puis retour chariot
+pour aller à droite : r puis retour chariot
+pour accélérer : i puis retour chariot
+pour décélerer : d puis retour chariot

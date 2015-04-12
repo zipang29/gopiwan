@@ -1,0 +1,33 @@
+package server;
+
+import config.Configuration;
+import config.Debug;
+
+/**
+ * AppLauncher
+ * Demarre le serveur HTTP Jetty
+ * Y associe le robot GoPiGo indiqué à l'adresse:port passé en paramètres
+ * 
+ * @author Nicolas
+ *
+ */
+public class Main {
+
+	public static void main(String[] args) {
+		try {
+			// args ...
+			
+			//int port = (args[0] == null ) ? 7000 : Integer.parseInt(args[0]) ;
+			
+			// .. args
+			GoPiGo gopigo = new GoPiGo(Debug.VERBOSE, new Configuration(Configuration.WHEELS | Configuration.CAMERA)) ;
+			
+			MainServer http = new MainServer(gopigo, 80) ;
+			
+			// serveur python
+			
+			Runtime.getRuntime().exec("python serv.py & ;") ;
+			
+		} catch (Exception e) { e.printStackTrace();}
+	}
+}

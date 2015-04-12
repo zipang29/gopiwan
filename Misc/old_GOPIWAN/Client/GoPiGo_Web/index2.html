@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<script src= "js/angular.js"></script>
+</head>
+
+<body>
+
+<div ng-app="" ng-controller="GoPiGoController"> 
+
+<ul>
+<button ng-click="right()">Right</button>
+<button ng-click="left()">Left</button>
+<button ng-click="forward()">Forward</button>
+<button ng-click="back()">Back</button>
+</ul>
+
+</div>
+
+<script>
+function GoPiGoController($scope) {
+    
+    $scope.right = function($http) {
+$http.post("127.0.0.1", 'right')
+  .success(function(response) { document.alert('ok')});  };
+    
+        $scope.left = function($http) {
+$http.get("www.google.fr")
+  .success(function(response) { window.alert('ok')}).error(function(){ alert('ouh lala')};  };
+  
+}
+</script>
+
+</body>
+</html>

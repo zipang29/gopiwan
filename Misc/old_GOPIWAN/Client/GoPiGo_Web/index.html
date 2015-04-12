@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+  <head>
+    <meta charset="utf-8">
+    <title>GoPiGo Connection</title>
+<script src="js/jquery.min.js"></script>
+
+</head>
+  
+  <body>
+      <button type="button" onclick="send('FORWARD\n1')">UP</button>
+      <button type="button" onclick="send('RIGHT')">RIGHT</button>
+      <button type="button" onclick="send('DOWN')">DOWN</button>
+      <button type="button" onclick="send('LEFT')">LEFT</button>
+<br/>
+      <video id="videoDisplay" onload="receiveFluxVideo()">
+            <source src="" type=video/mp4>
+      </video>
+<br/>
+      <textarea id="output" style="width : 600px ; height : 200px ;" ></textarea>
+  </body>
+    
+    <script src="api_Interactions.js"></script>
+ 
+</html>

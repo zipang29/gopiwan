@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+  <head>
+    <meta charset="utf-8">
+    <title>GoPiGo Client</title>
+    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="sockjs-0.3.min.js"></script>
+    <script>
+
+	
+    port = 3333;
+    //port = 42080;
+    localhost = window.location.hostname;
+    //localhost = "kerbert.ddns.net";
+    host = "http://" + localhost + ":" + port;
+    cameraURL = "http://" + localhost + ":8080/?action=stream";
+
+    </script>
+</head>
+  
+<body>
+<form method="GET"/>
+      <button type="button" onclick=setDirection("FORWARD")>Avant</button>
+      <button type="button" onclick=setDirection("LEFT")>Gauche</button>
+      <button type="button" onclick=setDirection("RIGHT")>Droite</button>
+      <button type="button" onclick=setDirection("DOWN")>Arrière</button>
+      <button type="button" onclick=setDirection("STOP")>Arrêt</button>
+</form>
+
+
+<script>
+
+/**
+* Fonction permettant d'env
+*/
+function setDirection(direction) 
+{
+    window.location = host + "/?direction="+direction;
+}
+
+//var cameraImage = $('#camera');
+
+
+
+</script>
+
+<p><img id="camera" src=""/></p>
+
+
+</body> 
+</html>

@@ -1,0 +1,4 @@
+mot de passe : belgique
+
+pour démarrer le mode hotspot : 
+sudo hostapd -d  /etc/hostapd/hostapd.conf

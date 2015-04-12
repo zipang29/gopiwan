@@ -42,23 +42,15 @@ public class HttpServer{
 	 * et le gopigo.
 	 * 
 	 * @param gopigo
-	 * @param port - port sur lequel ecoute le serveur (80 par défaut)
+	 * @param port - port sur lequel écoute le serveur (80 par défaut)
 	 * @throws Exception
 	 */
 	public HttpServer(GoPiGo gopigo, int port) throws Exception {
 
 		HttpServer.gopigo = gopigo ;
-
 		server = new Server(port);
-
 		ServletHandler handler = new ServletHandler();
 		server.setHandler(handler);
-
-
-
-
-		// Passing in the class for the servlet allows jetty to instantite an instance of that servlet and mount it
-		// on a given context path.
 		handler.addServletWithMapping(Servlet.class, "/*");
 	}
 
@@ -75,12 +67,10 @@ public class HttpServer{
 		/**
 		 * 
 		 */
-
 		private static final long serialVersionUID = 512529337341576745L;
 
 
 		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException {
-			//if (Globals.verbose) System.out.println("[MainServer] : doGet :"+request.getMethod()+" "+request.getQueryString());
 
 			response.setContentType("text/html");
 			response.setStatus(HttpServletResponse.SC_OK);
@@ -96,11 +86,32 @@ public class HttpServer{
 
 			try
 			{
-				if(req.contains("RIGHT")) gopigo.turnRight();
-				else if(req.contains("LEFT")) gopigo.turnLeft();
-				else if(req.contains("FORWARD")) gopigo.forward();
-				else if(req.contains("DOWN")) gopigo.backward();
-				else if(req.contains("STOP")) gopigo.stop();
+				if(req.contains("RIGHT"))
+				{
+					gopigo.turnRight();
+				}
+				else if(req.contains("LEFT"))
+				{
+					gopigo.turnLeft();
+				}
+				else if(req.contains("FORWARD")) 
+				{
+					gopigo.forward();
+				}
+				//Oui je sais, c'est très sale
+				else if(req.contains("DOWN") && !req.contains("SHUT"))
+				{
+					gopigo.backward();
+				}
+				else if(req.contains("STOP"))
+				{
+					gopigo.stop();
+				}
+				else if(req.contains("SHUTDOWN"))
+				{
+					gopigo.stop();
+					gopigo.stopStreaming();
+				}
 			}
 			catch
 			(NullPointerException npe){}

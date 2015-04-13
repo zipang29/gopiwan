@@ -14,7 +14,7 @@ public class Launcher {
 			
 			System.out.println("GoPiGo started...");
 			GoPiGo gopigo = new GoPiGo() ;
-			gopigo.startStreaming();//Lancement du streaming depuis la camera
+			//gopigo.startStreaming();//Lancement du streaming depuis la camera
 			HttpServer http = new HttpServer(gopigo, 80) ;
 	        http.start();
         

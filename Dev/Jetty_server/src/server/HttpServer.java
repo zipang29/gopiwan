@@ -63,12 +63,7 @@ public class HttpServer{
 	public static class Servlet extends HttpServlet
 	{
 
-
-		/**
-		 * 
-		 */
 		private static final long serialVersionUID = 512529337341576745L;
-
 
 		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException {
 
@@ -99,7 +94,7 @@ public class HttpServer{
 					gopigo.forward();
 				}
 				//Oui je sais, c'est très sale
-				else if(req.contains("DOWN") && !req.contains("SHUT"))
+				else if(req.contains("DOWN") && !req.contains("SHUT")) // #lol
 				{
 					gopigo.backward();
 				}

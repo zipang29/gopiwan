@@ -15,6 +15,8 @@
 	<classpathentry excluding="src_prof/|gpio/src/" kind="src" path="Misc/src"/>
 	<classpathentry kind="src" path="Misc/src/gpio/src"/>
 	<classpathentry kind="src" path="Misc/src/src_prof"/>
+	<classpathentry kind="src" path="Dev/Jetty_server/src/server/client"/>
+	<classpathentry excluding="src/server/client/" kind="src" path="Dev/Jetty_server"/>
 	<classpathentry kind="lib" path="Dev/Client/Android/AppliAndroid/GopiwanApp/gradle/wrapper/gradle-wrapper.jar"/>
 	<classpathentry kind="lib" path="Dev/Client/Android/GoPiGo_Android/GopiwanApp/gradle/wrapper/gradle-wrapper.jar"/>
 	<classpathentry kind="lib" path="Dev/Client/Android/Voix/bin/dexedLibs/android-support-v4-20a18f986f8c3e6ad13f59f6adac26a1.jar"/>
@@ -118,6 +120,28 @@
 	<classpathentry kind="lib" path="Misc/pi4j-0.0.5/lib/pi4j-service-javadoc.jar"/>
 	<classpathentry kind="lib" path="Misc/pi4j-0.0.5/lib/pi4j-service-sources.jar"/>
 	<classpathentry kind="lib" path="Misc/pi4j-0.0.5/lib/pi4j-service.jar"/>
+	<classpathentry kind="lib" path="Z:/Github/gopiwan/Misc/jersey/jaxrs-ri/lib/jersey-client.jar"/>
+	<classpathentry kind="lib" path="Z:/Github/gopiwan/Misc/jersey/jaxrs-ri/lib/jersey-common.jar"/>
+	<classpathentry kind="lib" path="Z:/Github/gopiwan/Misc/jersey/jaxrs-ri/lib/jersey-container-servlet.jar"/>
+	<classpathentry kind="lib" path="Z:/Github/gopiwan/Misc/jersey/jaxrs-ri/lib/jersey-container-servlet-core.jar"/>
+	<classpathentry kind="lib" path="Z:/Github/gopiwan/Misc/jersey/jaxrs-ri/lib/jersey-media-jaxb.jar"/>
+	<classpathentry kind="lib" path="Z:/Github/gopiwan/Misc/jersey/jaxrs-ri/lib/jersey-server.jar"/>
+	<classpathentry kind="lib" path="Z:/Github/gopiwan/Misc/jersey/jaxrs-ri/ext/aopalliance-repackaged-2.4.0-b10.jar"/>
+	<classpathentry kind="lib" path="Z:/Github/gopiwan/Misc/jersey/jaxrs-ri/ext/asm-debug-all-5.0.2.jar"/>
+	<classpathentry kind="lib" path="Z:/Github/gopiwan/Misc/jersey/jaxrs-ri/ext/hk2-api-2.4.0-b10.jar"/>
+	<classpathentry kind="lib" path="Z:/Github/gopiwan/Misc/jersey/jaxrs-ri/ext/hk2-locator-2.4.0-b10.jar"/>
+	<classpathentry kind="lib" path="Z:/Github/gopiwan/Misc/jersey/jaxrs-ri/ext/hk2-utils-2.4.0-b10.jar"/>
+	<classpathentry kind="lib" path="Z:/Github/gopiwan/Misc/jersey/jaxrs-ri/ext/javassist-3.18.1-GA.jar"/>
+	<classpathentry kind="lib" path="Z:/Github/gopiwan/Misc/jersey/jaxrs-ri/ext/javax.annotation-api-1.2.jar"/>
+	<classpathentry kind="lib" path="Z:/Github/gopiwan/Misc/jersey/jaxrs-ri/ext/javax.inject-2.4.0-b10.jar"/>
+	<classpathentry kind="lib" path="Z:/Github/gopiwan/Misc/jersey/jaxrs-ri/ext/javax.servlet-api-3.0.1.jar"/>
+	<classpathentry kind="lib" path="Z:/Github/gopiwan/Misc/jersey/jaxrs-ri/ext/jaxb-api-2.2.7.jar"/>
+	<classpathentry kind="lib" path="Z:/Github/gopiwan/Misc/jersey/jaxrs-ri/ext/jersey-guava-2.17.jar"/>
+	<classpathentry kind="lib" path="Z:/Github/gopiwan/Misc/jersey/jaxrs-ri/ext/org.osgi.core-4.2.0.jar"/>
+	<classpathentry kind="lib" path="Z:/Github/gopiwan/Misc/jersey/jaxrs-ri/ext/osgi-resource-locator-1.0.1.jar"/>
+	<classpathentry kind="lib" path="Z:/Github/gopiwan/Misc/jersey/jaxrs-ri/ext/persistence-api-1.0.jar"/>
+	<classpathentry kind="lib" path="Z:/Github/gopiwan/Misc/jersey/jaxrs-ri/ext/validation-api-1.1.0.Final.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="Z:/Github/gopiwan/Misc/jersey/jaxrs-ri/api/javax.ws.rs-api-2.0.1.jar"/>
 	<classpathentry kind="output" path="Dev/Client/Android/Voix/bin/classes"/>
 </classpath>

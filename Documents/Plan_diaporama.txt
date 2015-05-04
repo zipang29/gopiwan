@@ -1,0 +1,12 @@
+
+Plan : Titre (Noms , GoPiWan , Numéro Groupe)
+
+-> Plan
+-> Présentation du projet , objectifs,
+
+-> Fonctionnalités implantées
+-> Schéma architecture
+-> Problèmes rencontrés
+-> Démonstration
+
+-> Conclusion

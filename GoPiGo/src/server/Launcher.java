@@ -22,6 +22,7 @@ public class Launcher {
 			}
 			// TODO traiter proprement les arguments
 			Globals.gopigo = gopigo ;
+			@SuppressWarnings("unused")
 			HttpServer http = new HttpServer(8080) ;
         
 		}catch(Exception e){ e.printStackTrace(); }

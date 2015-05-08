@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
 
+import server.Globals;
 import server.daemons.DaemonPython;
 import server.daemons.DaemonStreaming;
 
@@ -139,17 +140,35 @@ public class GoPiGo implements GoPiGoMoves, GoPiGoStreaming{
 	}
 
 	@Override
-	public void startStreaming() throws IOException {
+	public void startStreaming() {
 
-		stream.start();
+		stream.run();
 		System.out.println("[Gopigo] : Start Streaming...");
 	}
 
 	@Override
 	public void stopStreaming() throws IOException {
 		
-		stream.interrupt();
+		stream.stopDaemon();
 		System.out.println("[Gopigo] : Streaming stopped !");
 	}
 
+	@Override
+	public void setResolution(int h, int w) {
+		
+		stream.stopDaemon();
+		Globals.StreamingHeight = String.valueOf(h) ;
+		Globals.StreamingWidth = String.valueOf(w) ;
+		stream = new DaemonStreaming() ;
+		startStreaming() ;
+	}
+
+	@Override
+	public void setFPS(int fps) {
+
+		stream.stopDaemon();
+		Globals.fps = String.valueOf(fps) ;
+		stream = new DaemonStreaming() ;
+		startStreaming() ;
+	}
 }

@@ -22,32 +22,27 @@ public class MoveService {
     	direction = direction.toUpperCase() ;
 		try
 		{
-			if(direction.contains("RIGHT"))
+			if(direction.equals("RIGHT"))
 			{
 				Globals.gopigo.turnRight();
 			}
-			else if(direction.contains("LEFT"))
+			else if(direction.equals("LEFT"))
 			{
 				Globals.gopigo.turnLeft();
 			}
-			else if(direction.contains("FORWARD")) 
+			else if(direction.equals("FORWARD")) 
 			{
 				Globals.gopigo.forward();
 			}
-			//Oui je sais, c'est très sale
-			else if(direction.contains("DOWN") && !direction.contains("SHUT")) // #lol
+			else if(direction.equals("BACKWARD"))
 			{
 				Globals.gopigo.backward();
 			}
-			else if(direction.contains("STOP"))
+			else if(direction.equals("STOP"))
 			{
 				Globals.gopigo.stop();
 			}
-			else if(direction.contains("SHUTDOWN"))
-			{
-				Globals.gopigo.stop();
-				Globals.gopigo.stopStreaming();
-			}
+			else return "Invalid Direction" ;
 		}
 		catch
 		(NullPointerException npe){}

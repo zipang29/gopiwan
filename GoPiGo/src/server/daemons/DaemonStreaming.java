@@ -4,8 +4,9 @@ import java.io.IOException;
 
 import server.Globals;
 
-public class DaemonStreaming extends Thread {
-
+public class DaemonStreaming{
+	
+	Process streamingProcess ;
 	
 	public void run(){
 		
@@ -16,27 +17,47 @@ public class DaemonStreaming extends Thread {
 		
 		System.out.println("[StreamingDaemon] Starting...");
 		try{
-			String[] cmd = {
+			String[] mkdir = {
+			        "mkdir",
+			        "/tmp/stream"
+			    };
+			Runtime.getRuntime().exec(mkdir);
+			String[] raspistill = {
 			        "raspistill",
 			        "--nopreview",
+			        "-tl",
+			        Globals.fps,
 			        "-w",
 			        Globals.StreamingWidth,
 			        "-h",
 			        Globals.StreamingHeight,
-			        "-q",
-			        "5",
+			        "-e",
+			        "bmp",
 			        "-o",
-			        "/tmp/stream/pic.jpg",
-			        "-tl",
-			        "500",
+			        "/tmp/stream/pic.bmp",
 			        "-t",
-			        "9999999"
+			        "9999999",
 			    };
-			Process p = Runtime.getRuntime().exec(cmd);
-			System.out.println("[StreamingDameon] Running... "+p.toString());
+			streamingProcess = Runtime.getRuntime().exec(raspistill);
+			System.out.println("[StreamingDameon] Running... "+streamingProcess.toString());
 		}catch(IOException e){
 			System.out.println("[StreamingDaemon] : Failed to start.");
 			if (Globals.verbose) e.printStackTrace();
+		}
+	}
+	
+	public void stopDaemon(){
+		
+		String[] kill = {
+		        "killall",
+		        "raspistill"
+		    };
+		try {
+			Runtime.getRuntime().exec(kill);
+			System.out.println("[StreamingDaemon] : Stopped.");
+		} catch (IOException e) {
+			System.out.println("[StreamingDaemon] : Failed to stop.");
+			e.printStackTrace();
 		}
 	}
 }

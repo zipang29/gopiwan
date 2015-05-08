@@ -21,15 +21,15 @@ public class StreamService {
 
     @GET
     @Path("/get")
-    @Produces("image/jpeg")
+    @Produces("image/bmp")
     public Response getStream() throws IOException {
 
-    		final String file = "/tmp/stream/pic.jpg" ;
+    		final String file = "/tmp/stream/pic.bmp";
 
     	    BufferedImage image = ImageIO.read(new File(file));
 
     	    ByteArrayOutputStream baos = new ByteArrayOutputStream();
-    	    ImageIO.write(image, "jpg", baos);
+    	    ImageIO.write(image, "bmp", baos);
     	    byte[] imageData = baos.toByteArray();
 
     	    System.out.println("[StreamService] : getFrame");

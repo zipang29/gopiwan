@@ -7,4 +7,8 @@ public interface GoPiGoStreaming {
 	public void startStreaming() throws IOException;
 	
 	public void stopStreaming() throws IOException;
+		
+	public void setResolution(int h, int w) ;
+	
+	public void setFPS(int fps) ;
 }

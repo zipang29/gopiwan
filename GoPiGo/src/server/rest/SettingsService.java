@@ -12,9 +12,31 @@ import server.Globals;
 import server.gopigo.GoPiGo;
 import server.gopigo.GoPiGo.Mode;
 
+/**
+ *		********	Settings SERVICE	********
+ *
+ * 	Service REST permettant de modifier quelques paramètres du GoPiGo
+ * 
+ *	Chaque méthode est documentée avec un exemple de cas d'utilisation.
+ */
 @Path("/settings")
 public class SettingsService {
 
+	/**
+	 * 	Change le mode de communication.
+	 * 	Il est possible de communiquer soit par Socket avec un daemon Python,
+	 * 	soit de lancer un interpréteur à chaque nouvelle commande.
+	 * 
+	 * 	Selon si le mouvement change souvent ou pas, l'un ou l'autre sera moins énergivore...
+	 * 	Si le robot doit souvent changer de direction, opter pour la communication par Socket.
+	 * 
+	 * 	Cette fonction inverse le mode de communication, et renvoie la valeur actuelle.
+	 * 
+	 * 		usage:	http://adressePi:8080/mode/toggle
+	 * 
+	 * @return [String] - "Toggle mode to $newMode"
+	 * @throws IOException
+	 */
     @GET
     @Path("/mode/toggle")
     @Produces(MediaType.TEXT_PLAIN)
@@ -31,6 +53,32 @@ public class SettingsService {
     	return "Toggle mode to : "+newMode ; 
     }
     
+    /**
+     * 	Change la résolution des images (snapshots) générés par le GoPiGo.
+     * 	Le module caméra équipé permet de filmer à une résolution FullHD, c'est à dire 1920 * 1080 pixels.
+     * 	Ceci dit, le processeur ARM présent est très peu performant pour l'encodage.
+     * 
+     * 	Il s'agira donc de faire un compromis entre la résolution et les fps (frames per second), fréquence de rafraichissement.
+     * 	Pour régler les fps, voir la fonction {@link #setFPS}
+     * 
+     * 	Valeurs possibles : 
+     * 		- FULLHD 	| 	FHD 	| 	1080 	| 	1080p
+     * 		- HD 		|	720		| 	720p
+     * 		- 480		| 	480p
+     * 		- 360		|	360p
+     * 		- 240		|	240p
+     * 
+     * 	Note : (insensible à la casse)
+     *  Il peut être nécéssaire de redémarrer le streaming après un appel à cette fonction.	{@link StreamService.start}}
+     *  
+     *  	usage:	http://adressePi:8080/settings/video/resolution/480p
+     *  
+     *  Valeurs conseillées : 360p@10fps
+     *  
+     * @param resolution
+     * @return 	[String] - "Resolution set to $newRes"
+     * @throws IOException
+     */
     @GET
     @Path("/video/resolution/{mode}")
     @Produces(MediaType.TEXT_PLAIN)
@@ -59,6 +107,27 @@ public class SettingsService {
     	return "Resolution set to "+height ;
     }
     
+    /**
+     * 	Change la fréquence de rafraichissement des images (snapshots) générés par le GoPiGo.
+     * 	Le module caméra équipé permet de filmer jusqu'à 30 fps.
+     * 	Néanmoins, chaque image générée donne beaucoup de travail d'encodage au processeur.
+     * 	Le nombre d'images par secondes (et donc la fluidité) se fait donc au détriment de la latence.
+     * 
+     * 	Il s'agira donc de faire un compromis entre la résolution et les fps (frames per second), fréquence de rafraichissement.
+     * 	Pour régler la resoltuion, voir la fonction {@link #setResolution}
+     * 
+     * 	Valeurs possibles : 0 < n < 30
+     * 
+     *  Il peut être nécéssaire de redémarrer le streaming après un appel à cette fonction.	{@link StreamService.start}}
+     *  
+     *  	usage:	http://adressePi:8080/settings/video/fps/8
+     *  
+     *  Valeurs conseillées : 360p@10fps 
+     *  
+     * @param resolution
+     * @return 	[String] - "FPS set to $newFPS"
+     * @throws IOException
+     */
     @GET
     @Path("/video/fps/{fps}")
     @Produces(MediaType.TEXT_PLAIN)

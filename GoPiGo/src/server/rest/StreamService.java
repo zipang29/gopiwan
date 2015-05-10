@@ -17,29 +17,29 @@ import server.Globals;
 
 /**
  *		********	STREAM SERVICE	********
- *
- * 	Service REST permettant d'utiliser le module caméra du GoPiGo.
- * 	Compte tenu de la puissance limitée du pi, et de la consommation électrique
- * 	relativement élevée d'un tel dispositif, le choix a été fait d'utiliser
- * 	des photos prises à intervalles réguliers au lieu d'un flux vidéo.
- * 	Ainsi, la bande passante est économisée, et le pi n'a pas à faire d'encodage vidéo (exercice ou il est mauvais).
- * 
- * 	Les fonctions disponibles permettent de : 
- * 		- démarrer le streaming {@link #start}
- * 		- le stopper {@link #stop}
- * 		- récupérer la frame actuelle {@link #getStream}
- * 
- *	Chaque méthode est documentée avec un exemple de cas d'utilisation.
+ *	<br>
+ * 	Service REST permettant d'utiliser le module caméra du GoPiGo.<br>
+ * 	Compte tenu de la puissance limitée du pi, et de la consommation électrique<br>
+ * 	relativement élevée d'un tel dispositif, le choix a été fait d'utiliser<br>
+ * 	des photos prises à intervalles réguliers au lieu d'un flux vidéo.<br>
+ * 	Ainsi, la bande passante est économisée, et le pi n'a pas à faire d'encodage vidéo (exercice ou il est mauvais).<br>
+ * <br>
+ * 	Les fonctions disponibles permettent de :<br> 
+ * 		- démarrer le streaming {@link #start}<br>
+ * 		- le stopper {@link #stop}<br>
+ * 		- récupérer la frame actuelle {@link #getStream}<br>
+ * <br>
+ *	Chaque méthode est documentée avec un exemple de cas d'utilisation.<br>
  */
 @Path("/video")
 public class StreamService {
 
 	/**
-	 * 	Récupère la dernière image enregistrée.
-	 * 	Attention : Impact important sur la bande passante.
-	 * 
-	 * 		usage:	http://adressePi:8080/video/get
-	 * 
+	 * 	Récupère la dernière image enregistrée.<br>
+	 * 	Attention : Impact important sur la bande passante.<br>
+	 * <br>
+	 * 		usage:	http://adressePi:8080/video/get<br>
+	 * <br>
 	 * @return	[BitMap File] - la dernière frame enregistrée
 	 * @throws IOException
 	 */
@@ -61,17 +61,18 @@ public class StreamService {
     }
     
     /**
-     * 	Démarre le processus d'acquisition vidéo.
-     * 	Une fois ce processus activé, la frame rendue par {@link #getStream()} changera à intervalle régulier.
-     * 	Cet intervalle est modifiable dans {@link SettingsService.setFPS}.
-     * 
-     * 	Attention : Impact important sur l'utilisation du CPU
-     * 	Bonne pratique : Stopper le streaming lorsqu'il n'est plus utilisé. {@link #stop()}
-     * 
-	 * 		usage:	http://adressePi:8080/video/start
-     * 
+     * 	Démarre le processus d'acquisition vidéo.<br>
+     * 	Une fois ce processus activé, la frame rendue par {@link #getStream()} changera à intervalle régulier.<br>
+     * 	Cet intervalle est modifiable dans {@link server.rest.SettingsService#setFPS(String)}<br>
+     * <br>
+     * 	Attention : Impact important sur l'utilisation du CPU<br>
+     * 	Bonne pratique : Stopper le streaming lorsqu'il n'est plus utilisé. {@link #stop()}<br>
+     * <br>
+	 * 		usage:	http://adressePi:8080/video/start<br>
+     * <br>
      * @return	[String] -	"Streaming started !"
      * @throws IOException
+     * @see server.rest.SettingsService#setFPS(String)
      */
     @GET
     @Path("/start")
@@ -84,11 +85,11 @@ public class StreamService {
     }
     
     /**
-     * 	Stoppe le processus d'acquisition vidéo.
-     * 	La dernière image enregistrée reste accessible.
-     * 
-	 * 		usage:	http://adressePi:8080/video/stop
-	 * 
+     * 	Stoppe le processus d'acquisition vidéo.<br>
+     * 	La dernière image enregistrée reste accessible.<br>
+     * <br>
+	 * 		usage:	http://adressePi:8080/video/stop<br>
+	 * <br>
      * @return
      * @throws IOException
      */

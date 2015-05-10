@@ -8,9 +8,21 @@ import java.net.Socket;
 import server.Globals;
 import server.daemons.DaemonPython;
 import server.daemons.DaemonStreaming;
-
+/**
+ * 	Interface entre l'API (appels utilisateurs), les démons et le matériel.<br>
+ * 	L'instance de cette classe, selon le {@link #mode} actuel,<br>
+ * 	va communiquer avec les PIN de la carte GoPiGo.<br>
+ * 	<br>
+ * 	Dans le cas du mode SOCKET, un packet contenant l'action à effectuer est envoyée<br>
+ * 	au DaemonPython {@link #pythond}.<br>
+ *  Sinon, un interpréteur est éxécuté avec le code idoine.<br>
+ *
+ */
 public class GoPiGo implements GoPiGoMoves, GoPiGoStreaming{
 	
+	/**
+	 *	Modes de communication interne possibles
+	 */
 	public enum Mode{
 		
 		SOCKET,
@@ -18,22 +30,46 @@ public class GoPiGo implements GoPiGoMoves, GoPiGoStreaming{
 		DEBUG ;
 	}
 	
+	/**
+	 * Mode de communication interne
+	 */
 	public Mode mode ;
 	
+	/**
+	 * Socket de sortie vers le DaemonPython
+	 */
 	private Socket socket ;
-		
+	
+	/**
+	 * {@link #socket}
+	 */
 	private DataOutputStream out ;
 	
+	/**
+	 * Démon Python pouvant recevoir les ordres
+	 */
 	private DaemonPython pythond ;
 	
+	/**
+	 * Processus d'acquisition vidéo
+	 */
 	private DaemonStreaming stream ;
 	
+	/**
+	 * Constructeur debug
+	 * @throws IOException
+	 */
 	public GoPiGo() throws IOException{
 
 		this.mode = Mode.DEBUG ;
 		System.out.println("Virtual Gopigo started...");
 	}
 	
+	/**
+	 * Initialise une instance dans un mode de communication concret
+	 * @param mode
+	 * @throws IOException
+	 */
 	public GoPiGo(String mode) throws IOException{
 
 		this.mode = Mode.valueOf(mode);
@@ -66,6 +102,24 @@ public class GoPiGo implements GoPiGoMoves, GoPiGoStreaming{
 		}
 		System.out.println("[Gopigo] : Turning right...");
 	}
+	
+	@Override
+	public void turnRightRot() throws IOException {
+		switch (this.mode){
+			case SOCKET : {
+				out.writeUTF("right_rot");
+				out.flush();
+				break ;
+			}
+			case PYTHON : {
+				String [] cmd = new String[]{"python","/home/pi/scripts/right_rot.py"};
+				Runtime.getRuntime().exec(cmd);
+				break ;
+			}
+			default : break ;
+		}
+		System.out.println("[Gopigo] : Turning right in rotation...");
+	}
 
 	@Override
 	public void turnLeft() throws IOException {
@@ -83,6 +137,24 @@ public class GoPiGo implements GoPiGoMoves, GoPiGoStreaming{
 		default : break ; 
 	}
 		System.out.println("[Gopigo] : Turning left...");
+	}
+	
+	@Override
+	public void turnLeftRot() throws IOException {
+		switch (this.mode){
+		case SOCKET : {
+			out.writeUTF("left_rot");
+			out.flush();
+			break ;
+		}
+		case PYTHON : {
+			String [] cmd = new String[]{"python","/home/pi/scripts/left_rot.py"};
+			Runtime.getRuntime().exec(cmd);
+			break ;
+		}
+		default : break ; 
+	}
+		System.out.println("[Gopigo] : Turning left in rotation...");
 	}
 
 	@Override
@@ -137,6 +209,60 @@ public class GoPiGo implements GoPiGoMoves, GoPiGoStreaming{
 		default : break ;
 	}
 		System.out.println("[Gopigo] : Stopped !");
+	}
+	
+	@Override
+	public void increaseSpeed() throws IOException {
+		switch (this.mode){
+		case SOCKET : {
+			out.writeUTF("speed++");
+			out.flush();
+			break ;
+		}
+		case PYTHON : {
+			String [] cmd = new String[]{"python","/home/pi/scripts/increase_speed.py"};
+			Runtime.getRuntime().exec(cmd);
+			break ;
+		}
+		default : break ;
+	}
+		System.out.println("[Gopigo] : Speed ++ !");		
+	}
+
+	@Override
+	public void decreaseSpeed() throws IOException {
+		switch (this.mode){
+		case SOCKET : {
+			out.writeUTF("speed--");
+			out.flush();
+			break ;
+		}
+		case PYTHON : {
+			String [] cmd = new String[]{"python","/home/pi/scripts/decrease.py"};
+			Runtime.getRuntime().exec(cmd);
+			break ;
+		}
+		default : break ;
+	}
+		System.out.println("[Gopigo] : Speed -- !");		
+	}
+
+	@Override
+	public void setSpeed(int speed) throws IOException {
+		switch (this.mode){
+		case SOCKET : {
+			out.writeUTF("speed:"+speed);
+			out.flush();
+			break ;
+		}
+		case PYTHON : {
+			String [] cmd = new String[]{"python","/home/pi/scripts/set_speed.py", String.valueOf(speed)};
+			Runtime.getRuntime().exec(cmd);
+			break ;
+		}
+		default : break ;
+	}
+		System.out.println("[Gopigo] : Set speed to "+speed+" !");		
 	}
 
 	@Override

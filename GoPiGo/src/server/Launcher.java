@@ -3,11 +3,9 @@ package server;
 import server.gopigo.GoPiGo;
 
 /**
- * 
- * @author David Barrat
- *
+ * 	Lanceur de l'application.<br>
+ *	Se charge de traiter les éventuels arguments, et de créer les instances de classes nécéssaires.<br>
  */
-
 public class Launcher {
 
 	public static void main(String[] args){

@@ -11,20 +11,19 @@ import javax.ws.rs.core.Response;
 
 /**
  *		********	HTML SERVICE	********
- *
- * 	Service REST permettant de récupérer l'interface embarquée par le GoPiGo.
- * 
- *	La méthode est documentée avec un exemple de cas d'utilisation.
+ *	<br>
+ * 	<br>Service REST permettant de récupérer l'interface embarquée par le GoPiGo.
+ * 	<br>
  */
 @Path("/")
 public class HTMLService {
 	
 	/**
-	 * 	Récupère l'interface embarquée du GoPiGo.
-	 * 	Cette interface est un fichier html, réalisant des appels à cette API.
-	 * 
-	 * 		usage:	http://adressePi:8080/interface
-	 * 
+	 * 	<br>Récupère l'interface embarquée du GoPiGo.
+	 * 	<br>Cette interface est un fichier html, réalisant des appels à cette API.
+	 * 	<br>
+	 * 	<br>	usage:	http://adressePi:8080/interface
+	 * 	<br>
 	 * @return - [HTML] interface embarquée
 	 * @throws IOException
 	 */

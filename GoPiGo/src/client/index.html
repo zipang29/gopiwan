@@ -5,19 +5,45 @@
         <meta charset="utf-8">
         <title>STREAMING PI</title>
         <meta name="description" content="An interactive getting started guide for Brackets.">
+	<script>
+		function getNewSpeed() { return document.getElementById("newSpeed").value;}
+	</script>
+
     </head>
     <body onload="updateImage()">
         
-        <h1>INTERFACE A DEUX BALLES</h1>
-        
         <div><img id='frame' src="http://192.168.1.110:8080/video/get" /></div>
         
+
+        <form action="http://192.168.1.110:8080/gopigo/move/left" method="GET">
+            <input type="submit" value="Gauche"/> 
+        </form>
         <form action="http://192.168.1.110:8080/gopigo/move/right" method="GET">
             <input type="submit" value="Droite"/> 
         </form>
-        <form action="http://192.168.1.110:8080/gopigo/move/stop" method="GET">
-            <input type="submit" value="Stop"/> 
+	<form action="http://192.168.1.110:8080/gopigo/move/forward" method="GET">
+            <input type="submit" value="Avancer"/> 
         </form>
+        <form action="http://192.168.1.110:8080/gopigo/move/backward" method="GET">
+            <input type="submit" value="Reculer"/> 
+        </form>
+        <form action="http://192.168.1.110:8080/gopigo/move/rotr" method="GET">
+            <input type="submit" value="Rotation_horaire"/> 
+        </form>
+        <form action="http://192.168.1.110:8080/gopigo/move/rotl" method="GET">
+            <input type="submit" value="Rotation_anti-horaire"/> 
+        </form>
+        <form action="http://192.168.1.110:8080/gopigo/move/stop" method="GET">
+            <input type="submit" value="Arret"/> 
+        </form>
+
+        <form action="http://192.168.1.110:8080/gopigo/speed/set/"+getNewSpeed() method="GET">
+            	<input id="newSpeed">
+		<input type="submit" value="New Speed"/> 
+        </form>
+
+
+
 <script type="text/javascript">
 
 var newImage = new Image();

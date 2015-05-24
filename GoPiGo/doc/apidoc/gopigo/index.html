@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<!-- saved from url=(0034)https://console.online.net/fr/api/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API - Documentation - GOPIGO</title>
+
+        <link rel="stylesheet" href="css/global.css">
+    
+<link rel="shortcut icon" href="img/logo_32.ico">
+
+<link rel="apple-touch-icon" sizes="120x120" href="img/logo_120.png">
+<link rel="icon" type="image/png" href="img/logo_32.png" sizes="32x32">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-square70x70logo" content="/bundles/onlineconsole/images/mstile-70x70.png?b62eb261">
+<meta name="msapplication-square150x150logo" content="/bundles/onlineconsole/images/mstile-150x150.png?b62eb261">
+<meta name="msapplication-wide310x150logo" content="/bundles/onlineconsole/images/mstile-310x150.png?b62eb261">
+
+
+        <script src="./js/jquery.min.js"></script>
+    <!--[if IE]>
+    <script type="text/javascript" src="/bundles/onlineconsole/js/online-ie-fixes.js?b62eb261"></script>
+  <![endif]-->
+    <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./js/bootstrap-dropdown.js"></script>
+    <script type="text/javascript" src="./js/bootstrap-tooltip.js"></script>
+        <script src="./js/online-global.js"></script>
+    
+
+<script type="text/javascript" src="./js/leswag.js"></script>
+<link rel="stylesheet" href="css/leswag.css">
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.api_call_example_link').click(function() {
+        var api_call_example_id = $(this).attr('data-example-id');
+        $('#' + api_call_example_id).slideToggle();
+    });
+    $(function () { var a = $('[href=' + location.hash + ']'); a && a.tab('show'); });
+});
+
+</script>
+          </head>
+
+    <body class="online">
+
+    <div class="container front">
+
+<div class="clear visible-phone" id="headend"></div>
+    <h1 class="highlight">API GoPiGo</h1> 
+  <div class="clear"></div>
+  <div class="content">
+
+    <div class="main_content">
+    
+      <p class="bold">
+    Contrôlez votre GoPiGo depuis n'importe où, pourvu que vous parliez HTTP !
+        </p>
+  
+        
+  
+<h2 class="page-header firsttitle">Documentation</h2>
+
+            <div id="api_introduction" class="api_doc">
+                <p>L'API REST décrite dans ce document permet de communiquer et de contrôler le GoPiGo. L'adresse de base est <strong>http://192.168.42.1:8080</strong>.</p>
+
+                <p>Pour utiliser cette API, aucune identification n'est préalable, il suffit d'envoyer une requête à l'adresse adéquate.</p>
+            </div>
+
+        </div>
+        <div class="span12">
+
+<div class="tabbable">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="./index.html#api_all" data-toggle="tab">All</a></li>
+        <li><a href="./index.html#api_move" data-toggle="tab">GoPiGo</a></li>
+        <li><a href="./index.html#api_settings" data-toggle="tab">Settings</a></li>
+        <li><a href="./index.html#api_streaming" data-toggle="tab">Streaming</a></li>
+        <li><a href="./index.html#api_interface" data-toggle="tab">Interface</a></li>
+            </ul>
+
+    <div class="tab-content">
+        <div id="api_all" class="tab-pane active">
+
+            <div class="api_doc">
+
+            </div>
+
+            <div id="api_methods" class="api_doc">
+                <h2 class="page-header">GoPiGo</h2>
+
+                
+<h3>/gopigo</h3>
+
+<div class="leswag_resource">    <!-- OPERATION -->
+        <div class="leswag_row leswag_operation leswag_operation_GET">
+            
+            <div class="leswag_row leswag_operation_signature">  <!-- signature -->
+                <h4 class=""><span>GET</span> /gopigo/move/{direction}</h4>
+                <div class="pull-right leswag_operation_summary">
+                    Mettre le GoPiGo en mouvement
+                </div>
+            </div>  <!-- / signature -->
+
+            <div class="leswag_row leswag_operation_full" style="display: none;"> <!-- operation full -->
+                        <div class="leswag_block">
+                <p class="lead">Fait éxécuter au GoPiGo le mouvement passé en paramètre dans le path.</p>
+                </div>
+
+                        <div class="leswag_block">
+                <h5>Paramètres :</h5>
+
+                <div class="leswag_parameters">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr><th class="span2">&nbsp;</th>
+                                                <th class="span2">Nom</th>
+                            <th class="span2">Type</th>
+                            <th>Description</th>
+                        </tr></thead>
+                        <tbody>
+                                                <tr>
+                                <td class="leswag_parameter_GET">Path</td>
+                                                        <td>direction</td>
+                                <td>chaîne</td>
+                                <td>Direction à suivre</td>
+                            </tr>
+                                            </tbody>
+                    </table>
+
+                    <h5>Valeurs possibles de Direction : </h5>
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr><th class="span2">Value</th>
+                                <th class="span2">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="leswag_parameter_GET">FORWARD</td>
+                                <td>Avancer tout droit</td>
+                            </tr>
+                            <tr>
+                                <td class="leswag_parameter_GET">BACKWARD</td>
+                                <td>Reculer</td>
+                            </tr>
+                            <tr>
+                                <td class="leswag_parameter_GET">RIGHT</td>
+                                <td>Tourner à droite. Une roue active.</td>
+                            </tr>
+                            <tr>
+                                <td class="leswag_parameter_GET">LEFT</td>
+                                <td>Tourner à gauche. Une roue active.</td>
+                            </tr>
+                            <tr>
+                                <td class="leswag_parameter_GET">ROTR</td>
+                                <td>Demi-tour dextrogyre. Deux roues actives.</td>
+                            </tr>
+                            <tr>
+                                <td class="leswag_parameter_GET">ROTL</td>
+                                <td>Demi-tour levrogyre. Deux roues actives.</td>
+                            </tr>
+                            <tr>
+                                <td class="leswag_parameter_GET">STOP</td>
+                                <td>Stopper le GoPiGo. Préférer la fonction <strong>gopigo/stop</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                            </div>
+                </div>
+
+                <div class="leswag_block">
+                    <h5>Valeur de retour :</h5>
+
+                        <p class="leswag_return_value">
+                            PLAIN_TEXT : </br>
+                                <ul>
+                                    <li>Si direction valide : "Moving $DIRECTION ..."</li>
+                                    <li>Si direction invalide : "Bad Direction !"</li>
+                            </ul>
+                        </p>
+
+                    <div class="leswag_schema_placeholder"></div>
+                </div>
+
+            </div> <!-- / operation full -->
+                
+                
+    </div>
+</div>   <!-- / OPERATION -->
+        
+        <div class="leswag_resource">    <!-- OPERATION -->
+        <div class="leswag_row leswag_operation leswag_operation_GET">
+            
+            <div class="leswag_row leswag_operation_signature">  <!-- signature -->
+                <h4 class=""><span>GET</span> /gopigo/speed/set/{speed}</h4>
+                <div class="pull-right leswag_operation_summary">
+                    Fixer la vitesse du GoPiGo
+                </div>
+            </div>  <!-- / signature -->
+
+            <div class="leswag_row leswag_operation_full" style="display: none;"> <!-- operation full -->
+                        <div class="leswag_block">
+                <p class="lead">Règle la vitesse du GoPiGo à la valeur passée en paramètre.</p>
+                </div>
+
+                        <div class="leswag_block">
+                <h5>Paramètres :</h5>
+
+                <div class="leswag_parameters">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr><th class="span2">&nbsp;</th>
+                                                <th class="span2">Nom</th>
+                            <th class="span2">Type</th>
+                            <th>Description</th>
+                        </tr></thead>
+                        <tbody>
+                                                <tr>
+                                <td class="leswag_parameter_GET">Path</td>
+                                                        <td>speed</td>
+                                <td>entier 0-255</td>
+                                <td>Nouvelle vitesse</td>
+                            </tr>
+                                            </tbody>
+                    </table>
+
+
+                            </div>
+                </div>
+
+                <div class="leswag_block">
+                    <h5>Valeur de retour :</h5>
+
+                        <p class="leswag_return_value">
+                            PLAIN_TEXT : </br>
+                                <ul>
+                                    <li>Si speed valide : "Speed set to $SPEED ..."</li>
+                                    <li>Si speed invalide : "Bad Direction..."</li>
+                            </ul>
+                        </p>
+
+                    <div class="leswag_schema_placeholder"></div>
+                </div>
+
+            </div> <!-- / operation full -->
+                
+                
+    </div>
+</div>   <!-- / OPERATION -->
+            
+            <div class="leswag_resource">    <!-- OPERATION -->
+        <div class="leswag_row leswag_operation leswag_operation_GET">
+            
+            <div class="leswag_row leswag_operation_signature">  <!-- signature -->
+                <h4 class=""><span>GET</span> /gopigo/speed/decrease</h4>
+                <div class="pull-right leswag_operation_summary">
+                    Diminuer la vitesse
+                </div>
+            </div>  <!-- / signature -->
+
+            <div class="leswag_row leswag_operation_full" style="display: none;"> <!-- operation full -->
+                        <div class="leswag_block">
+                <p class="lead">Diminue la vitesse du GoPiGo de 10.</p>
+                </div>
+
+                        <div class="leswag_block">
+                <h5>Paramètres :</h5>
+
+                    <div class="leswag_parameters">
+
+                    </div>
+                </div>
+
+                <div class="leswag_block">
+                    <h5>Valeur de retour :</h5>
+
+                        <p class="leswag_return_value">
+                            PLAIN_TEXT : "Speed --"
+                        </p>
+
+                    <div class="leswag_schema_placeholder"></div>
+                </div>
+
+            </div> <!-- / operation full -->
+                
+                
+    </div>
+</div>   <!-- / OPERATION -->
+            
+                        <div class="leswag_resource">    <!-- OPERATION -->
+        <div class="leswag_row leswag_operation leswag_operation_GET">
+            
+            <div class="leswag_row leswag_operation_signature">  <!-- signature -->
+                <h4 class=""><span>GET</span> /gopigo/speed/increase</h4>
+                <div class="pull-right leswag_operation_summary">
+                    Augmenter la vitesse
+                </div>
+            </div>  <!-- / signature -->
+
+            <div class="leswag_row leswag_operation_full" style="display: none;"> <!-- operation full -->
+                        <div class="leswag_block">
+                <p class="lead">Augmenter la vitesse du GoPiGo de 10.</p>
+                </div>
+
+                        <div class="leswag_block">
+                <h5>Paramètres :</h5>
+
+                    <div class="leswag_parameters">
+
+                    </div>
+                </div>
+
+                <div class="leswag_block">
+                    <h5>Valeur de retour :</h5>
+
+                        <p class="leswag_return_value">
+                            PLAIN_TEXT : "Speed ++"
+                        </p>
+
+                    <div class="leswag_schema_placeholder"></div>
+                </div>
+
+            </div> <!-- / operation full -->
+                
+                
+    </div>
+</div>   <!-- / OPERATION -->
+            
+<h3>/settings</h3>
+            
+<div class="leswag_resource">    <!-- OPERATION -->
+        <div class="leswag_row leswag_operation leswag_operation_GET">
+            
+            <div class="leswag_row leswag_operation_signature">  <!-- signature -->
+                <h4 class=""><span>GET</span> /settings/setFPS/{fps}</h4>
+                <div class="pull-right leswag_operation_summary">
+                    Régalge fps
+                </div>
+            </div>  <!-- / signature -->
+
+            <div class="leswag_row leswag_operation_full" style="display: none;"> <!-- operation full -->
+                        <div class="leswag_block">
+                <p class="lead">Fixe le nombre de frames générées par le GoPiGo pendant une durée d'une seconde.</p>
+                </div>
+
+                        <div class="leswag_block">
+                <h5>Paramètres :</h5>
+
+                <div class="leswag_parameters">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr><th class="span2">&nbsp;</th>
+                                                <th class="span2">Nom</th>
+                            <th class="span2">Type</th>
+                            <th>Description</th>
+                        </tr></thead>
+                        <tbody>
+                                                <tr>
+                                <td class="leswag_parameter_GET">Path</td>
+                                                        <td>fps</td>
+                                <td>entier 0-25</td>
+                                <td>Images par secondes</td>
+                            </tr>
+                                            </tbody>
+                    </table>
+
+
+                            </div>
+                </div>
+
+                <div class="leswag_block">
+                    <h5>Valeur de retour :</h5>
+
+                        <p class="leswag_return_value">
+                            PLAIN_TEXT : "FPS set to $fps" 
+                        </p>
+
+                    <div class="leswag_schema_placeholder"></div>
+                </div>
+
+            </div> <!-- / operation full -->
+                
+                
+    </div>
+</div>   <!-- / OPERATION -->
+        
+
+</div></div>
+
+<div class="hide" id="leswag_model_schemas">
+           </div>
+    </div>
+        </div>
+
+        <div id="api_move" class="api_doc tab-pane">
+
+
+        </div>
+    
+    
+        <div id="api_settings" class="api_doc tab-pane">
+
+            
+
+        </div>
+    
+    
+        <div id="api_streaming" class="api_doc tab-pane">
+
+            
+
+        </div>
+    
+    
+        <div id="api_interface" class="api_doc tab-pane">
+
+            
+
+        </div>
+
+        
+      <div class="footer clearfix text-right">
+    <p class="info"><br>GoPiGo Project - UBS</p>
+        </div>
+
+  </div>
+        <script type="text/javascript">
+      $('.dropdown-toggle').dropdown();
+    </script>
+      </div>
+  
+
+</body></html>

@@ -1,0 +1,127 @@
+.leswag_row {
+    display: block;
+    clear: both;
+}
+
+.leswag_operation {
+    margin-bottom: 10px;
+}
+
+.leswag_parameter_required {
+    font-weight: 600;
+}
+
+.leswag_operation_signature {
+    background-color: #f5f5f5;
+    cursor: pointer;
+    padding: 0;
+    height: 40px;
+    line-height: 40px;
+}
+
+.leswag_operation_signature h4 {
+    display: inline-block;
+    margin: 0;
+    height: 40px;
+    line-height: 40px;
+    padding-right: 20px;
+
+    zoom: 1;
+    *display: inline;
+}
+
+.leswag_operation_signature h4 span {
+    color: white;
+    font-weight: 300;
+    display: inline-block;
+    width: 70px;
+    padding: 0 20px;
+    margin-right: 20px;
+}
+
+.leswag_parameter_GET, .leswag_operation_GET .leswag_operation_signature {
+    color: #163E6D;
+}
+
+.leswag_operation_GET .leswag_operation_signature{
+    background-color: #c6eEfD;
+}
+
+.leswag_operation_GET h4 span {
+    background-color: #163E6D;
+}
+
+.leswag_operation_GET .leswag_operation_full {
+    border-color: #163E6D;
+}
+
+.leswag_parameter_POST, .leswag_operation_POST .leswag_operation_signature {
+    color: #E50068;
+}
+
+.leswag_operation_POST .leswag_operation_signature {
+    background-color: #ffe0f8;
+}
+
+.leswag_operation_POST h4 span {
+    background-color: #E50068;
+}
+
+.leswag_operation_POST .leswag_operation_full {
+    border-color: #E50068;
+}
+
+.leswag_parameter_PUT, .leswag_operation_PUT .leswag_operation_signature {
+    color: #5a3;
+}
+
+.leswag_operation_PUT .leswag_operation_signature{
+    background-color: #efe;
+}
+
+.leswag_operation_PUT h4 span {
+    background-color: #5a3;
+}
+
+.leswag_parameter_DELETE, .leswag_operation_DELETE .leswag_operation_signature,
+.leswag_parameter_event, .leswag_operation_event .leswag_operation_signature {
+    color: #555;
+}
+
+.leswag_operation_DELETE .leswag_operation_signature,
+.leswag_operation_event .leswag_operation_signature {
+    background-color: #eee;
+}
+
+.leswag_operation_DELETE h4 span,
+.leswag_operation_event h4 span{
+    background-color: #555;
+}
+
+.leswag_operation_DELETE .leswag_operation_full,
+.leswag_operation_event .leswag_operation_full{
+    border-color: #555;
+}
+
+.leswag_operation_summary {
+    margin-right: 20px;
+}
+
+.leswag_operation_full {
+    margin: 0 0 20px;
+    padding: 0 20px 20px;
+    border: 1px solid #eee;
+}
+
+.leswag_block {
+    margin: 10px 0 30px;
+}
+
+.leswag_operation h5 {
+    font-size: 17.5px;
+}
+
+.leswag_schema_placeholder pre {
+    max-height: 300px;
+    overflow: auto;
+}

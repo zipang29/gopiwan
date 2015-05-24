@@ -51,7 +51,7 @@ $(document).ready(function() {
   <div class="content">
 
     <div class="main_content">
-    
+    <div class="pull-right no_margin"><img src="img/logo_120.png" /></div>
       <p class="bold">
     Contrôlez votre GoPiGo depuis n'importe où, pourvu que vous parliez HTTP !
         </p>
@@ -70,13 +70,6 @@ $(document).ready(function() {
         <div class="span12">
 
 <div class="tabbable">
-    <ul class="nav nav-tabs">
-        <li class="active"><a href="./index.html#api_all" data-toggle="tab">All</a></li>
-        <li><a href="./index.html#api_move" data-toggle="tab">GoPiGo</a></li>
-        <li><a href="./index.html#api_settings" data-toggle="tab">Settings</a></li>
-        <li><a href="./index.html#api_streaming" data-toggle="tab">Streaming</a></li>
-        <li><a href="./index.html#api_interface" data-toggle="tab">Interface</a></li>
-            </ul>
 
     <div class="tab-content">
         <div id="api_all" class="tab-pane active">
@@ -185,11 +178,49 @@ $(document).ready(function() {
                 </div>
 
             </div> <!-- / operation full -->
+    </div>
+</div>   <!-- / OPERATION -->
+        
+        <div class="leswag_resource">    <!-- OPERATION -->
+        <div class="leswag_row leswag_operation leswag_operation_GET">
+            
+            <div class="leswag_row leswag_operation_signature">  <!-- signature -->
+                <h4 class=""><span>GET</span> /gopigo/stop</h4>
+                <div class="pull-right leswag_operation_summary">
+                    Stopper le mouvement en cours
+                </div>
+            </div>  <!-- / signature -->
+
+            <div class="leswag_row leswag_operation_full" style="display: none;"> <!-- operation full -->
+                        <div class="leswag_block">
+                <p class="lead">Stoppe le mouvement en cours d'éxécution. Si aucun mouvement n'est en cours, cela est sans effet.</p>
+                </div>
+
+                        <div class="leswag_block">
+                <h5>Paramètres :</h5>
+
+                    <div class="leswag_parameters">
+
+                    </div>
+                </div>
+
+                <div class="leswag_block">
+                    <h5>Valeur de retour :</h5>
+
+                        <p class="leswag_return_value">
+                            PLAIN_TEXT : "Stopped !"
+                        </p>
+
+                    <div class="leswag_schema_placeholder"></div>
+                </div>
+
+            </div> <!-- / operation full -->
                 
                 
     </div>
 </div>   <!-- / OPERATION -->
         
+        <h3>/gopigo/speed</h3>
         <div class="leswag_resource">    <!-- OPERATION -->
         <div class="leswag_row leswag_operation leswag_operation_GET">
             
@@ -327,22 +358,85 @@ $(document).ready(function() {
                 
     </div>
 </div>   <!-- / OPERATION -->
-            
+
+            <h2 class="page-header">Settings</h2>
 <h3>/settings</h3>
+    </div>   <!-- / OPERATION -->
             
-<div class="leswag_resource">    <!-- OPERATION -->
+                        <div class="leswag_resource">    <!-- OPERATION -->
         <div class="leswag_row leswag_operation leswag_operation_GET">
             
             <div class="leswag_row leswag_operation_signature">  <!-- signature -->
-                <h4 class=""><span>GET</span> /settings/setFPS/{fps}</h4>
+                <h4 class=""><span>GET</span> /settings/mode/toggle</h4>
                 <div class="pull-right leswag_operation_summary">
-                    Régalge fps
+                    Changer le mode de communication interne
                 </div>
             </div>  <!-- / signature -->
 
             <div class="leswag_row leswag_operation_full" style="display: none;"> <!-- operation full -->
                         <div class="leswag_block">
-                <p class="lead">Fixe le nombre de frames générées par le GoPiGo pendant une durée d'une seconde.</p>
+                <p class="lead">
+                            Change le mode de communication interne, qui permet de passer du Java aux appels à la librairie Python.<br><div></div>
+                            Deux modes possibles : <br>
+                            <ul>
+                            <li>SOCKET : Communication TCP sur localhost avec un programme démon</li>
+                            <li>PYTHON : Lance un nouvel interpréteur à chaque appel</li></ul>
+                            Selon les cas d'utilisation, il peut être préférable d'utiliser l'un ou l'autre des modes, c'est pourquoi il est possible de changer, même en cours d'utilisation.<br>
+                            En effet, si les mouvements sont relativement peu fréquents, le mode PYTHON est plus économe en ressources. <br>A l'inverse, si le GoPiGo change souvent de cap, le mode SOCKET est préférable.<br>
+                            L'appel à cette fonction permet donc de changer le mode de communication actuel.
+                </p>
+            </div>
+
+                        <div class="leswag_block">
+                <h5>Paramètres :</h5>
+
+                    <div class="leswag_parameters">
+
+                    </div>
+                </div>
+
+                <div class="leswag_block">
+                    <h5>Valeur de retour :</h5>
+
+                        <p class="leswag_return_value">
+                            PLAIN_TEXT : "Toggle mode to $newMode"
+                        </p>
+
+                    <div class="leswag_schema_placeholder"></div>
+                </div>
+
+            </div> <!-- / operation full -->
+                
+                
+    </div>
+</div>   <!-- / OPERATION -->
+            
+            <h3>/settings/video</h3>
+<div class="leswag_resource">    <!-- OPERATION -->
+        <div class="leswag_row leswag_operation leswag_operation_GET">
+            
+            <div class="leswag_row leswag_operation_signature">  <!-- signature -->
+                <h4 class=""><span>GET</span> /settings/video/fps/{fps}</h4>
+                <div class="pull-right leswag_operation_summary">
+                    Réglage fps
+                </div>
+            </div>  <!-- / signature -->
+
+            <div class="leswag_row leswag_operation_full" style="display: none;"> <!-- operation full -->
+                        <div class="leswag_block">
+                <p class="lead">
+                        Change la fréquence de rafraichissement des images (snapshots) générés par le GoPiGo.<br><div></div>
+                        Le module caméra équipé permet de filmer jusqu'à 30 fps.<br>
+                        Néanmoins, chaque image générée donne beaucoup de travail d'encodage au processeur.<br>
+                        Le nombre d'images par secondes (et donc la fluidité) se fait donc au détriment de la latence.<br>
+<br>
+                        Il s'agira donc de faire un compromis entre la résolution et les fps (frames per second), fréquence de rafraichissement.<br>
+                        Pour régler la resoltuion, voir la fonction <strong>/settings/video/resolution/{resolution}</strong><br>
+<br>
+                        Valeurs possibles : 0 - n - 30<br>
+<br>
+                        Il peut être nécéssaire de redémarrer le streaming après un appel à cette fonction. <strong>video/start</strong>      <br>    
+                </p>
                 </div>
 
                         <div class="leswag_block">
@@ -365,9 +459,7 @@ $(document).ready(function() {
                             </tr>
                                             </tbody>
                     </table>
-
-
-                            </div>
+                </div>
                 </div>
 
                 <div class="leswag_block">
@@ -386,6 +478,248 @@ $(document).ready(function() {
     </div>
 </div>   <!-- / OPERATION -->
         
+<div class="leswag_resource">    <!-- OPERATION -->
+        <div class="leswag_row leswag_operation leswag_operation_GET">
+            
+            <div class="leswag_row leswag_operation_signature">  <!-- signature -->
+                <h4 class=""><span>GET</span> /settings/video/resolution/{resolution}</h4>
+                <div class="pull-right leswag_operation_summary">
+                    Réglage Résolution
+                </div>
+            </div>  <!-- / signature -->
+
+            <div class="leswag_row leswag_operation_full" style="display: none;"> <!-- operation full -->
+                        <div class="leswag_block">
+                <p class="lead">
+Change la résolution des images (snapshots) générés par le GoPiGo. <br> <div></div>
+Le module caméra équipé permet de filmer à une résolution FullHD, c'est à dire 1920 * 1080 pixels. <br>
+Ceci dit, le processeur ARM présent est très peu performant pour l'encodage. <br>
+<br>
+Il s'agira donc de faire un compromis entre la résolution et les fps (frames per second), fréquence de rafraichissement. <br>
+Pour régler les fps, voir la fonction <strong>/video/fps/{fps}</strong> <br>
+<br>
+Il peut être nécéssaire de redémarrer le streaming après un appel à cette fonction. <br>
+<br>
+                </p>
+                </div>
+
+                        <div class="leswag_block">
+                <h5>Paramètres :</h5>
+
+                <div class="leswag_parameters">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr><th class="span2">&nbsp;</th>
+                                                <th class="span2">Nom</th>
+                            <th class="span2">Type</th>
+                            <th>Description</th>
+                        </tr></thead>
+                        <tbody>
+                                                <tr>
+                                <td class="leswag_parameter_GET">Path</td>
+                                                        <td>resolution</td>
+                                <td>chaîne</td>
+                                <td>Nouvelle résolution d'image</td>
+                            </tr>
+                                            </tbody>
+                    </table>
+                    <p>
+                    <h5>Valeurs possibles : </h5><br>
+                        <ul>
+                    <li>FULLHD | FHD | 1080 | 1080p</li>
+                    <li>HD | 720 | 720p</li>
+                    <li>480 | 480p</li>
+                    <li>360 | 360p</li>
+                    <li>240 | 240p</li>
+                    </ul>
+                            Note : (insensible à la casse) </p>
+                </div>
+                </div>
+
+                <div class="leswag_block">
+                    <h5>Valeur de retour :</h5>
+
+                        <p class="leswag_return_value">
+                            PLAIN_TEXT : "Resolution set to $newRes" 
+                        </p>
+
+                    <div class="leswag_schema_placeholder"></div>
+                </div>
+            </div> <!-- / operation full -->
+        </div>
+</div>   <!-- / OPERATION -->
+ 
+
+<h2 class="page-header">Streaming</h2>
+
+<h3>/video</h3>            
+                        <div class="leswag_resource">    <!-- OPERATION -->
+        <div class="leswag_row leswag_operation leswag_operation_GET">
+            
+            <div class="leswag_row leswag_operation_signature">  <!-- signature -->
+                <h4 class=""><span>GET</span> /video/get</h4>
+                <div class="pull-right leswag_operation_summary">
+                    Récupère la frame courante
+                </div>
+            </div>  <!-- / signature -->
+
+            <div class="leswag_row leswag_operation_full" style="display: none;"> <!-- operation full -->
+                        <div class="leswag_block">
+                <p class="lead">Récupère la dernière image enregistrée.<br> <div></div>
+Attention : Impact important sur la bande passante.</p>
+                </div>
+
+                        <div class="leswag_block">
+                <h5>Paramètres :</h5>
+
+                    <div class="leswag_parameters">
+
+                    </div>
+                </div>
+
+                <div class="leswag_block">
+                    <h5>Valeur de retour :</h5>
+
+                        <p class="leswag_return_value">
+                            BITMAP image : frame courante
+                        </p>
+
+                    <div class="leswag_schema_placeholder"></div>
+                </div>
+
+            </div> <!-- / operation full -->
+                
+                
+    </div>
+</div>   <!-- / OPERATION -->
+             
+                        <div class="leswag_resource">    <!-- OPERATION -->
+        <div class="leswag_row leswag_operation leswag_operation_GET">
+            
+            <div class="leswag_row leswag_operation_signature">  <!-- signature -->
+                <h4 class=""><span>GET</span> /video/start</h4>
+                <div class="pull-right leswag_operation_summary">
+                    Démarre le streaming
+                </div>
+            </div>  <!-- / signature -->
+
+            <div class="leswag_row leswag_operation_full" style="display: none;"> <!-- operation full -->
+                        <div class="leswag_block">
+                <p class="lead">Démarre le processus d'acquisition vidéo. <br> <div></div>
+Une fois ce processus activé, la frame rendue par <strong>/video/get</strong> changera à intervalle régulier. <br>
+Cet intervalle est modifiable dans <strong>/settings/video/fps/{fps}</strong> <br>
+<br>
+Attention : Impact important sur l'utilisation du CPU<br>
+Bonne pratique : Stopper le streaming lorsqu'il n'est plus utilisé. <br>
+                            </p>
+                </div>
+
+                        <div class="leswag_block">
+                <h5>Paramètres :</h5>
+
+                    <div class="leswag_parameters">
+
+                    </div>
+                </div>
+
+                <div class="leswag_block">
+                    <h5>Valeur de retour :</h5>
+
+                        <p class="leswag_return_value">
+                            PLAIN_TEXT : "Streaming started"
+                        </p>
+
+                    <div class="leswag_schema_placeholder"></div>
+                </div>
+
+            </div> <!-- / operation full -->
+                
+                
+    </div>
+</div>   <!-- / OPERATION -->
+            
+    <div class="leswag_resource">    <!-- OPERATION -->
+        <div class="leswag_row leswag_operation leswag_operation_GET">
+            
+            <div class="leswag_row leswag_operation_signature">  <!-- signature -->
+                <h4 class=""><span>GET</span> /video/stop</h4>
+                <div class="pull-right leswag_operation_summary">
+                    Démarre le streaming
+                </div>
+            </div>  <!-- / signature -->
+
+            <div class="leswag_row leswag_operation_full" style="display: none;"> <!-- operation full -->
+                        <div class="leswag_block">
+                <p class="lead">Stoppe le processus d'acquisition vidéo. <br> <div></div>
+La dernière image enregistrée reste accessible.<br>
+                            </p>
+                </div>
+
+                        <div class="leswag_block">
+                <h5>Paramètres :</h5>
+
+                    <div class="leswag_parameters">
+
+                    </div>
+                </div>
+
+                <div class="leswag_block">
+                    <h5>Valeur de retour :</h5>
+
+                        <p class="leswag_return_value">
+                            PLAIN_TEXT : "Streaming stopped !"
+                        </p>
+
+                    <div class="leswag_schema_placeholder"></div>
+                </div>
+
+            </div> <!-- / operation full -->
+    </div>
+</div>   <!-- / OPERATION -->
+
+            <h2 class="page-header">Interface</h2>
+<h3>/interface</h3>
+
+    <div class="leswag_resource">    <!-- OPERATION -->
+        <div class="leswag_row leswag_operation leswag_operation_GET">
+            
+            <div class="leswag_row leswag_operation_signature">  <!-- signature -->
+                <h4 class=""><span>GET</span> /interface</h4>
+                <div class="pull-right leswag_operation_summary">
+                    Accès à l'interface embarquée
+                </div>
+            </div>  <!-- / signature -->
+
+            <div class="leswag_row leswag_operation_full" style="display: none;"> <!-- operation full -->
+                        <div class="leswag_block">
+                <p class="lead">Accès à l'interface embarquée du GoPiGo.<br> <div></div>
+Une interface HTML basique, mais néanmoins utilisable par une grande diversité d'appareils est disponible avec cette API.<br>
+Cette interface peut être vue comme un exemple d'utilisation de l'API qui vient d'être présentée. <br>
+                            En effet, la grande partie des fonctions présentées sont utilisées dans cette petite interface.<br>
+                            </p>
+                </div>
+
+                        <div class="leswag_block">
+                <h5>Paramètres :</h5>
+
+                    <div class="leswag_parameters">
+
+                    </div>
+                </div>
+
+                <div class="leswag_block">
+                    <h5>Valeur de retour :</h5>
+
+                        <p class="leswag_return_value">
+                            HTML : l'interface, au format HTML
+                        </p>
+
+                    <div class="leswag_schema_placeholder"></div>
+                </div>
+
+            </div> <!-- / operation full -->
+    </div>
+</div>   <!-- / OPERATION -->
 
 </div></div>
 
@@ -393,33 +727,6 @@ $(document).ready(function() {
            </div>
     </div>
         </div>
-
-        <div id="api_move" class="api_doc tab-pane">
-
-
-        </div>
-    
-    
-        <div id="api_settings" class="api_doc tab-pane">
-
-            
-
-        </div>
-    
-    
-        <div id="api_streaming" class="api_doc tab-pane">
-
-            
-
-        </div>
-    
-    
-        <div id="api_interface" class="api_doc tab-pane">
-
-            
-
-        </div>
-
         
       <div class="footer clearfix text-right">
     <p class="info"><br>GoPiGo Project - UBS</p>

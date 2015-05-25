@@ -1,300 +1,70 @@
 <!DOCTYPE html>
-<html  onmousemove="listenMouse(event) ; main() ;" ontouchmove="listenMouse(event) ; main() ;">
+<html>
 
 <head>
 <meta charset="utf-8">
-<title>INTERFACE GOPIGO</title>
-
-<style>
-    body {
-        background-color: #d4d4d4;
-    }
-    
-    #framecamera {
-        background: #2a2a2a;
-        box-sizing: border-box;
-        border-radius: 5px;
-        text-align: center;
-        width: auto;
-        height: auto;
-        -moz-box-sizing: border-box;
-        float: left;
-        font-family: Arial, sans-serif;
-        position: absolute;
-        padding: 2%;
-        top: 2%;
-        left: 2%;
-        z-index: 1;
-        opacity: 1;
-        box-shadow: 0 0 10px rgba(0,0,0,0.3);
-        -webkit-transition: opacity 0.3s ease-in;
-        transition: opacity 0.3s ease-in;
-        -moz-user-select: none;
-        -webkit-user-select: none;
-        user-select: none;
-    }
-    
-    #frame{
-        position: relative;
-        border-color: black;
-        border-width: thick;
-        text-align: left ;
-        width: auto ;
-        height: auto ;
-    }
-    
-    .commands{
-        background: #747474;
-        color: white ;
-        box-sizing: border-box;
-        text-align: center ;
-        border-radius: 10px;
-        display : inline-flex ;
-        width: auto ;
-        height: auto;
-        -moz-box-sizing: border-box;
-        float: left;
-        font-family: Arial, sans-serif;
-        position: absolute;
-        padding: 5px;
-        top: 500px;
-        left: 2%;
-        z-index: 2;
-        opacity: 1;
-        box-shadow: 0 0 10px rgba(0,0,0,0.3);
-        -webkit-transition: opacity 0.3s ease-in;
-        transition: opacity 0.3s ease-in;
-        -moz-user-select: none;
-        -webkit-user-select: none;
-        user-select: none;        
-    }
-    
-    .commands2{
-        background: #606060;
-        position: relative ;
-        margin: 10px ;
-        padding: 10px ;
-        border-radius: 5px ;
-        box-shadow: 1px 1px 0 0 rgba(0, 0, 0, 0.2) inset, 1px 1px 0 0 rgba(128, 128, 128, 0.85) ;
-    }
-    
-    #circle {
-	width: 50px;
-	height: 50px;
-	background: white;
-	-moz-border-radius: 50px;
-	-webkit-border-radius: 50px;
-	border-radius: 50px;
-}
-    
-    #triangle-up {
-	width: 0;
-	height: 0;
-	border-left: 25px solid transparent;
-	border-right: 25px solid transparent;
-	border-bottom: 50px solid white;
-}
-    #triangle-down {
-	width: 0;
-	height: 0;
-	border-left: 25px solid transparent;
-	border-right: 25px solid transparent;
-	border-top: 50px solid white;
-}
-    #triangle-left {
-	width: 0;
-	height: 0;
-	border-top: 25px solid transparent;
-	border-right: 50px solid white;
-	border-bottom: 25px solid transparent;
-}
-    
-    #triangle-right {
-	width: 0;
-	height: 0;
-	border-top: 25px solid transparent;
-	border-left: 50px solid white;
-	border-bottom: 25px solid transparent;
-}
-
-    #radioactive { 
-        content: "\2622" ;
-    }
-    
+<title>STREAMING PI</title>
+<meta name="description"
+	content="An interactive getting started guide for Brackets.">
 
 
-    .onoffswitch {
-        margin-top: 25px ;
-        position: relative; width: 90px;
-        -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
-    }
-    .onoffswitch-checkbox {
-        display: none;
-    }
-    .onoffswitch-label {
-        display: block; overflow: hidden; cursor: pointer;
-        border: 2px solid #666666; border-radius: 30px;
-    }
-    .onoffswitch-inner {
-        display: block; width: 200%; margin-left: -100%;
-        -moz-transition: margin 0.3s ease-in 0s; -webkit-transition: margin 0.3s ease-in 0s;
-        -o-transition: margin 0.3s ease-in 0s; transition: margin 0.3s ease-in 0s;
-    }
-    .onoffswitch-inner:before, .onoffswitch-inner:after {
-        display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
-        font-size: 16px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
-        -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
-        border-radius: 30px;
-        box-shadow: 0px 15px 0px rgba(0,0,0,0.08) inset;
-    }
-    .onoffswitch-inner:before {
-        content: "ON";
-        padding-left: 15px;
-        background-color: #6BB2ED; color: #FFFFFF;
-        border-radius: 30px 0 0 30px;
-    }
-    .onoffswitch-inner:after {
-        content: "OFF";
-        padding-right: 15px;
-        background-color: #FFFFFF; color: #666666;
-        text-align: right;
-        border-radius: 0 30px 30px 0;
-    }
-    .onoffswitch-switch {
-        display: block; width: 30px; margin: 0px;
-        background: #FFFFFF;
-        border: 2px solid #666666; border-radius: 30px;
-        position: absolute; top: 0; bottom: 0; right: 56px;
-        -moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s;
-        -o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s; 
-        background-image: -moz-linear-gradient(center top, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 80%); 
-        background-image: -webkit-linear-gradient(center top, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 80%); 
-        background-image: -o-linear-gradient(center top, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 80%); 
-        background-image: linear-gradient(center top, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 80%);
-        box-shadow: 0 1px 1px white inset;
-    }
-    .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
-        margin-left: 0;
-    }
-    .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
-        right: 0px; 
-    }
-
-</style>
-    
 </head>
-    <body>
-<!--<body onload="updateImage()"> -->
+<body>
+<!--<body onload="updateImage()">-->
 
 <!--<div><img id='frame' src="http://192.168.1.110:8080/video/get" /></div>-->
 
-<div id='framecamera' onclick="" onmousedown="changeState('framecamera')" onmouseup="changeState('framecamera')" ontouchstart="changeState('framecamera')" ontouchend="changeState('framecamera')">
-    <img id='frame' onclick="" onmousedown="changeState('framecamera')" onmouseup="changeState('framecamera')" ontouchstart="changeState('framecamera')" ontouchend="changeState('framecamera')" src="http://www.iceagemovies.com/assets/images/tiles/_hero/sid.jpg"/>
+<div id='framecamera' width='600px;'>
+<img id='frame' src="http://www.iceagemovies.com/assets/images/tiles/_hero/sid.jpg"/>
 </div>
 
 
-        
-<div id="commands" class="commands" onclick="" onmousedown="changeState('commands')" onmouseup="changeState('commands')" ontouchstart="changeState('commands')" ontouchend="changeState('commands')">
-    
-<div class="commands2">
 
-    <select onchange="send('/settings/video/resolution/'+this.value)">
+<div width='800px'>
+<input type="button" value="Gauche" onClick="send('/gopigo/move/left')" />
+<input type="button" value="Droite" onClick="send('/gopigo/move/right')" />
+<input type="button" value="Avancer" onClick="send('/gopigo/move/forward')" />
+<input type="button" value="Reculer" onClick="send('/gopigo/move/backward')" />
+<input type="button" value="Stop" onClick="send('/gopigo/move/stop')" />
+<input type="button" value="Random" onClick="sendRand()" />
+<br>
+<input type="button" value="Rotation horaire" onClick="send('/gopigo/move/rotr')" />
+<input type="button" value="Rotation anti-horaire" onClick="send('/gopigo/move/rotl')" />
+
+<select onchange="send('/settings/video/resolution/'+this.value)">
   <option value="240p">240p</option>
   <option value="360p">360p</option>
   <option value="480p">480p</option>
   <option value="HD" disabled=disabled'>HD</option>
   <option value="FullHD" disabled=disabled'>FULLHD</option>
 </select>
-<br>
-<select style="margin : 5px ;" onchange="send('/settings/video/fps/'+this.value)">
+
+<select onchange="send('/settings/video/fps/'+this.value)">
   <option value="1">1 FPS</option>
   <option value="5">5 FPS</option>
   <option value="10">10 FPS</option>
 </select>
-    <br>
-<div class="onoffswitch">
-    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" onclick="toggleCamera()">
-    <label class="onoffswitch-label" for="myonoffswitch">
-        <span class="onoffswitch-inner"></span>
-        <span class="onoffswitch-switch"></span>
-    </label>
-</div>
-</div>
-        
-        <div class="commands2">
 
-            <!--
-<input type="button" value="Gauche" onClick="send('/gopigo/move/left')" />
-<input type="button" value="Droite" onClick="send('/gopigo/move/right')" />
-<input type="button" value="Avancer" onClick="send('/gopigo/move/forward')" />
-<input type="button" value="Reculer" onClick="send('/gopigo/move/backward')" />
-<input type="button" value="Stop" onClick="send('/gopigo/move/stop')" />
- -->           
-<table border="0"> 
-  <tr> 
- <td> <div onClick="send('/gopigo/move/rotl')" style="font-size : xx-large; text-align : center ; vertical-align : center ;"> &#x21B6 </div> </td> 
- <td> <div id="triangle-up" onClick="send('/gopigo/move/forward')"></div> </td> 
- <td> <div onClick="send('/gopigo/move/rotr')" style="font-size : xx-large; text-align : center ; vertical-align : center ;"> &#x21B7 </div> </td> 
-  </tr> 
-      <tr> 
- <td> <div id="triangle-left" onClick="send('/gopigo/move/left')"></div> </td> 
- <td> <div id="circle" onClick="send('/gopigo/move/stop')"></div> </td> 
- <td> <div id="triangle-right" onClick="send('/gopigo/move/right')"></div> </td> 
-  </tr> 
-      <tr> 
- <td> </td> 
- <td> <div id="triangle-down" onClick="send('/gopigo/move/backward')"></div> </td> 
- <td> <div onClick="sendRand()" style="font-size : xx-large; text-align : center ; vertical-align : center ;"> &#x2657 </div> </td> 
-  </tr> 
-</table>
-            <!--
-<div id="triangle-right" onClick="send('/gopigo/move/right')"></div>
-<div id="triangle-up" onClick="send('/gopigo/move/forward')"></div>
-<div id="triangle-down" onClick="send('/gopigo/move/backward')"></div>
-<div id="triangle-left" onClick="send('/gopigo/move/left')"></div>
-<div id="circle" onClick="send('/gopigo/move/stop')"></div>
-<div id="curvedarrowD" onClick="send('/gopigo/move/rotr')"></div>
-<div id="curvedarrowD" onClick="send('/gopigo/move/rotl')"></div>         
-            
-<input type="button" value="Random" onClick="sendRand()" />
-<input type="button" value="Rotation horaire" onClick="send('/gopigo/move/rotr')" />
-<input type="button" value="Rotation anti-horaire" onClick="send('/gopigo/move/rotl')" />
--->
-</div>
-        
-        
-        <div class="commands2">
-            <input sorient="vertical" style="width: 20px; -webkit-appearance: slider-vertical; writing-mode: bt-lr;" type="range" value="80" max="250" min="0" step="10" onchange="send('/gopigo/speed/set/'+this.value)">
-        </div>
 
+<div>
+<br>Vitesse<br>
+<input type="range" value="10" max="50" min="0" step="10" onchange="send('/gopigo/speed/set/'+this.value)">
 </div>
+</div>
+
+
 
 <br>
 
 
 </body>
 </html>
-
 <script>
 
 
-    adresseDuPi="http://192.168.42.1"+":8080";//Remplacer localhost par l'adresse du pi
+    adresseDuPi="http://localhost"+":8080";//Remplacer localhost par l'adresse du pi
     debug = false;
     delay = 2000;
-    
-    stateCamera = "off" ; 
-    
-    function toggleCamera(){
-     
-        if (stateCamera == "off" ) {
-            stateCamera = "on" ;
-            send('/video/start') ;
-        }else{
-            stateCamera = "off" ;
-            send('/video/stop') ;
-        }
-        //alert(stateCamera) ;
-    }
 
         function send(order)
         {
@@ -306,7 +76,7 @@
         {
               var commandes = [];
               commandes.push("/gopigo/move/left");
-	          commandes.push("/gopigo/move/right");
+	      commandes.push("/gopigo/move/right");
               commandes.push("/gopigo/move/forward");
               commandes.push("/gopigo/move/backward");
               commandes.push("/gopigo/move/rotr");
@@ -322,7 +92,7 @@
 
     function updateImage()
     {
-       if(newImage.complete) 
+       /* if(newImage.complete) 
         {
             document.getElementById("frame").src = newImage.src;
             newImage = new Image();
@@ -330,74 +100,14 @@
         }
 
         setTimeout(updateImage, 100); // 2 fps
+	
+	*/ 
 
+// à décommenter !
     };
 
-</script>
 
-<script>
 
-var 
-    x = 0 , // ancienne position du pointeur
-    y = 0 ,
-    offsetx,  // pour suivre le déplacement du curseur
-    offsety,
-    div = document.getElementById("commands"),
-    deplace = false,
-    debug = false ;
-
-/*
- *  Suit le mouvement du pointeur
- */
-function listenMouse(event){
- 
-    offsetx = event.pageX - x ;
-    offsety = event.pageY - y ; 
-    x = event.pageX ;
-    y = event.pageY ;
-    
-    if(debug) console.log("x : "+x+" y : "+y+"   Move : "+offsetx+" "+offsety);
-}
-
-/*
- * Change la classe de la div #id
- */
-function changeState(id){
-    
-    div = document.getElementById(id) ;
-    if(!deplace){ // la classe est en déplacement, on l'arrete
-        deplace = true;
-    }else deplace = false ;
-    
-    if(debug) console.log("Deplace : "+deplace);
-}
-
-/*
- * Deplace la div de x, y
- */
-function moveDiv(i, j){
-    
-    var rect = div.getBoundingClientRect();
-    var rx = rect.left ;
-    var ry = rect.top;
-    
-    rx = parseInt(rx) ; ry = parseInt(ry) ; i = parseInt(i) ; j = parseInt(j) ;
-    
-    i += rx ;
-    j += ry ;
-    
-    div.style.left = i + "px" ;
-    div.style.top = j + "px" ;
-    
-    if (debug) console.log("Div style : left:"+div.style.left+" , top : "+div.style.top);
-}
-    
-    function main(){
-    
-    // mouvement eventuel de la div
-    
-    if(deplace) moveDiv(offsetx, offsety) ;
-}
 
 </script>
 
